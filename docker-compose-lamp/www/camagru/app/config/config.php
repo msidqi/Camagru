@@ -7,6 +7,6 @@ define('DB_NAME', 'camagru_db');
 
 define('APPROOT', dirname(dirname(__FILE__)));
 
-define('URLROOT', 'http://localhost/my_mvc');
+define('URLROOT', 'http://localhost/camagru');
 
 define('SITENAME', 'WebsiteName');
