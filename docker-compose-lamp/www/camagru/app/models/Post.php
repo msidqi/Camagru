@@ -7,7 +7,7 @@ class Post {
 	}
 
 	public function getPosts(){
-		$this->db->query("SELECT * FROM users");
+		$this->db->query("SELECT * FROM `users`");
 
 		return ($this->db->getAllResult());
 	}

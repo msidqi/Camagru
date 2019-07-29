@@ -12,3 +12,26 @@ SELECT * FROM users;
 
 
 
+#-------------------------------------------------------------------------------
+CREATE DATABASE IF NOT EXISTS camagru_db;
+
+USE camagru_db;
+
+CREATE TABLE IF NOT EXISTS `users` (`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`user_name` VARCHAR(255) NOT NULL,
+`email`	VARCHAR(255) NOT NULL,
+`password` VARCHAR(255) NOT NULL,
+`verified` BIT NOT NULL DEFAULT B'0',
+`user_image`
+`created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS `posts` (`image_id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`user_id` INT NOT NULL,
+`image` VARCHAR(255) NOT NULL,
+`image_type` VARCHAR(25) NOT NULL,
+`image_size` VARCHAR(25) NOT NULL,
+`created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO `users` (user_name, email, password, verified) VALUES('mouad', 'mouad@gmail.com', '123456', B'1');

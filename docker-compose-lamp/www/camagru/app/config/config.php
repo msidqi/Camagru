@@ -9,4 +9,4 @@ define('APPROOT', dirname(dirname(__FILE__)));
 
 define('URLROOT', 'http://localhost/camagru');
 
-define('SITENAME', 'WebsiteName');
+define('SITENAME', 'Camagru');

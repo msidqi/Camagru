@@ -4,8 +4,9 @@
 	<ul>
 		<?php foreach($data['posts'] as $user) :?>
 		
-		<li> <?php echo $user->login ?> </li>
+		<li> <?php echo $user->email ?> </li>
 		
 		<?php endforeach; ?>
+	
 	</ul>
 <?php require_once APPROOT . '/views/include/footer.php';?>

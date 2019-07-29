@@ -2,6 +2,7 @@
 
 
 class Pages extends Controller {
+	private $postModel;
 
 	public function __construct(){
 		$this->postModel = $this->model('Post');
@@ -12,7 +13,7 @@ class Pages extends Controller {
 		
 		$data = [
 			'title' => 'index page',
-			'posts' => $posts
+			'posts' => $posts,
 		];
 
 		$this->view('pages/index', $data);
@@ -20,7 +21,8 @@ class Pages extends Controller {
 
     public function about(){
 		$data = [
-			'title' => 'about page'
+			'title' => 'about page',
+			'description' => 'This is my php camagru-project web application, it\'s an instagram-like app the allows users to customize and take pictures, share, comment, and like other people\'s posts'
 		];
 		$this->view('pages/about', $data);
 	}

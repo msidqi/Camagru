@@ -12,8 +12,8 @@ class Core {
 			$this->currentController = ucwords($url[0]);
 			unset($url[0]);
 		}
-		require_once '../app/controllers/' . $this->currentController . '.php';
-		$this->currentController = new $this->currentController; 
+		require_once '../app/controllers/' . $this->currentController . '.php'; // if the previous if-conditions fails, require Default controller, otherwise use the requested one
+		$this->currentController = new $this->currentController; // Instantiate the class
 
 		if (isset($url[1])){
 			//Call the appropriate Method if it exists
@@ -22,7 +22,7 @@ class Core {
 				unset($url[1]);
 			}
 		}
-		$this->params = $url ? array_values($url) : [];
+		$this->params = $url ? array_values($url) : []; // pass the rest as parameters if they exist (controller and method are unset).
 		call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
 	}
 
