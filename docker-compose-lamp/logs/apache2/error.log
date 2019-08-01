@@ -117,3 +117,15 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 [Mon Jul 29 20:44:23.469653 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
 [Mon Jul 29 21:00:51.021235 2019] [autoindex:error] [pid 16] [client 172.18.0.1:38224] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
 [Mon Jul 29 23:31:19.244990 2019] [php7:error] [pid 22] [client 172.18.0.1:42312] script '/var/www/html/action_page.php' not found or unable to stat, referer: http://localhost/camagru/users/register
+[Mon Jul 29 23:53:55.721623 2019] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Tue Jul 30 21:31:44.896883 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) PHP/7.1.20 configured -- resuming normal operations
+[Tue Jul 30 21:31:44.897231 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Wed Jul 31 00:03:32.475593 2019] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Wed Jul 31 22:12:49.828512 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) PHP/7.1.20 configured -- resuming normal operations
+[Wed Jul 31 22:12:49.828877 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Thu Aug 01 00:36:36.247533 2019] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Thu Aug 01 11:35:06.443839 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) PHP/7.1.20 configured -- resuming normal operations
+[Thu Aug 01 11:35:06.444389 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
