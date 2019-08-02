@@ -3,9 +3,9 @@
 <div class="box-container text-center">
 	<h3>Sign in</h3>
 	<form method='post' action=<?php echo URLROOT . '/users/login'; ?>>
-			<div class='form-group text-left'><h6 class='ml-1'>User name</h6>
-			<input class="form-control <?php echo !empty($data['name_error']) ? 'is-invalid' : ''; ?>" type="text" name="user_name" value="<?php echo $data['user_name'];?>"><br>
-			<span class='invalid-feedback'><?php echo $data['name_error']; ?></span>
+			<div class='form-group text-left'><h6 class='ml-1'>User name or email</h6>
+			<input class="form-control <?php echo (!empty($data['name_error']) || !empty($data['email_error'])) ? 'is-invalid' : ''; ?>" type="text" name="user_name/email" value="<?php echo $data['user_name'];?>"><br>
+			<span class='invalid-feedback'><?php if(empty($data['name_error'])) echo $data['email_error']; else echo $data['name_error']; ?></span>
 			</div>
 			<div class='form-group text-left'><h6 class='ml-1'>Password</h6>
 			<input class="form-control <?php echo !empty($data['password_error']) ? 'is-invalid' : ''; ?>" type="password" name="password"><br>
