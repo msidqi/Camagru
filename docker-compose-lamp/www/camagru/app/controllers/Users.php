@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class Users extends Controller {
 	private $userModel;
 
@@ -96,17 +96,18 @@ class Users extends Controller {
 			}
 			// registration data is good. send query to model. else reload register page with appropriate errors.
 			if (empty($data['name_error']) && empty($data['email_error'])
-					&& empty($data['password_error']) && empty($data['confirm_password_error'])){
+				&& empty($data['password_error']) && empty($data['confirm_password_error'])){
+				
 				$data['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-				if ($this->userModel->registerUser($data))
+				if ($this->userModel->registerUser($data)){
+					// mail($data['email'], 'Registration success', 'yeet');
 					redirect('users/login'); // redirect through url to login page
-				else {
-					$data['name_error'] = 'Something went wrong';
-					$this->view('users/register', $data);
+				} else {
+					$data['name_error'] = 'Something went wrong!!!';
+					$this->view('users/register', $data); // data is valid but something went wrong in model
 				}
 			} else
-				$this->view('users/register', $data);
+				$this->view('users/register', $data); // data is not valid
 
 		} else {
 			$data = [
@@ -191,18 +192,19 @@ class Users extends Controller {
 			}
 			// if user input is correct, check if it exists in database then login. else reload page with appropriate errors
 			if (empty($data['name_or_email_error'])	&& empty($data['password_error'])){
-				$loggedInUser = $this->userModel->loginUser($data);
-				if ($loggedInUser){
+				$user = $this->userModel->loginUser($data);
+				if ($user){
 					// start session
-
-				}
-				else {
+					/*if (mail('vezoviro@mail-fix.com', 'Registration success', 'yeet'))
+						echo "email sent<br>";*/
+					$this->createUserSession($user);
+					redirect('pages/index');
+				} else {
 					$data['password_error'] = 'Incorrect password';
-					$this->view('/users/login', $data);
+					$this->view('users/login', $data);
 				}
-			}
-			else
-				$this->view('/users/login', $data);
+			} else
+				$this->view('users/login', $data);
 		} else {
 			$data = [
 				'user_name'				=> '',
@@ -214,4 +216,115 @@ class Users extends Controller {
 			$this->view('users/login', $data);
 		}
 	}
+
+
+	public function logout(){
+		$this->destroyUserSession();
+		redirect('users/login');
+	}
+
+	public function profile(){
+		if ($this->isLoggedIn()){
+
+			$data = [
+				'title'			=> 'profile page',
+				'description'	=> 'best profile page ever',
+				'user_name'		=> $_SESSION['user_name'],
+			];
+
+			$this->view('users/profile', $data);
+		} else {
+			$this->view('users/login');
+		}
+	}
+
+	public function createUserSession($user){
+		$_SESSION['user_id'] = $user->id;
+		$_SESSION['user_name'] = $user->user_name;
+		$_SESSION['user_email'] = $user->email;
+	}
+
+	public function destroyUserSession(){
+		unset($_SESSION['user_id']);
+		unset($_SESSION['user_name']);
+		unset($_SESSION['user_email']);
+		session_destroy();
+	}
+
+	public function isLoggedIn(){
+		if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])
+										&& isset($_SESSION['user_email']))
+			return (true);
+		else
+			return (false);
+	}
+
+	public function changeUserName($new_user_name){
+		if ($this->isLoggedIn() && 
+		$this->userModel->userNameExists($_SESSION['user_name'])){
+			$data = [
+				'user_name'		=> $_SESSION['user_name'],
+				'new_user_name'	=> $new_user_name
+			];
+			if ($this->userModel->changeUserName($data)){
+				$_SESSION['user_name'] = $new_user_name;
+				redirect('users/profile');
+			}
+		}
+		echo "Error changing user_name<br>";
+	}
+
+	public function changeEmail($new_email){
+		if ($this->isLoggedIn() && 
+		$this->userModel->emailExists($_SESSION['email'])){
+			$data = [
+				'email'		=> $_SESSION['email'],
+				'new_email'	=> $new_email
+			];
+			if ($this->userModel->changeEmail($data)){
+				$_SESSION['email'] = $new_email;
+				redirect('users/profile');
+			}
+		}
+		echo "Error changing email<br>";
+	}
+
+	public function changePassword($email, $new_password){
+		if ($this->isLoggedIn()){									// with login
+			if (preg_match('/^[0-9a-zA-Z_+=-]{5,25}$/', $new_password)){
+				$data = [
+					'email'		=> $email,
+					'new_password'	=> password_hash($new_password, PASSWORD_DEFAULT)
+				];
+				if ($this->userModel->changePassword($data))
+					redirect('users/profile');
+			}
+		} else if ($this->userModel->emailExists($email)){		 // without login
+			// send password reset email.
+
+			// he connects throught that link them =>
+			/*if ($this->userModel->changePassword($email, $new_password))
+				return (true);*/
+		}
+		echo "Error changing password<br>";
+	}
+
+	public function changeProfilePhoto($new_profile_photo){
+		if ($this->isLoggedIn() && 
+		$this->userModel->userNameExists($_SESSION['user_name'])){
+			$data = [
+				'user_name'		=> $_SESSION['user_name'],
+				'new_profile_photo'	=> $new_profile_photo
+			];
+			if ($this->userModel->changeProfilePhoto($data)){
+				redirect('users/profile');
+			}
+		}
+		echo "Error changing profile pic<br>";
+	}
+
+	public function verifyUser(){
+
+	}
+
 }

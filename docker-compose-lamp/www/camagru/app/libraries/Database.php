@@ -61,9 +61,9 @@ class Database {
 	}
 
 	// executes and gets all query result as an object, use PDO::FETCH_ASSOC for asscociative array
-	public function getAllResult(){
+	public function getAllResult($fetchattr = NULL){
 		$this->stmt->execute();
-		return ($this->stmt->fetchAll());
+		return ($this->stmt->fetchAll($fetchattr));
 	}
 
 	public function getSingleResult(){

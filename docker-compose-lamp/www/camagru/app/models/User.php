@@ -27,6 +27,28 @@ class User {
 		return (false);
 	}
 
+	public function getUserByEmail($user_email){
+		$this->db->query('SELECT * FROM `users` WHERE `email` = :email');
+		$this->db->bind(':email', $user_email, PDO::PARAM_STR);
+
+		// object containing the found user row.
+		$user = $this->db->getSingleResult();
+		if ($user)
+			return ($user);
+		return (false);
+	}
+
+	public function getUserByUserName($user_name){
+		$this->db->query('SELECT * FROM `users` WHERE `user_name` = :user_name');
+		$this->db->bind(':user_name', $user_name, PDO::PARAM_STR);
+
+		// object containing the found user row.
+		$user = $this->db->getSingleResult();
+		if ($user)
+			return ($user);
+		return (false);
+	}
+
 	public function registerUser($data){
 
 		$this->db->query("INSERT INTO `users`(user_name, email, password) VALUES(:user_name, :email, :password)");
@@ -55,4 +77,53 @@ class User {
 		}
 		return (false);
 	}
+
+	public function changeEmail($data){
+		$user = $this->getUserByEmail($data['email']);
+		if ($user){
+			//update email
+			$this->db->query("UPDATE `users` SET `email` = :new_email WHERE `email` = $user->email");
+			$this->db->bind(':new_email', $data['new_email'], PDO::PARAM_STR);
+			if ($this->db->execute())
+				return (true);
+		}
+		return (false);
+	}
+
+	public function changeUserName($data){
+		$user = $this->getUserByUserName($data['user_name']);
+		if ($user){
+			//update user name
+			$this->db->query("UPDATE `users` SET `user_name` = :new_user_name WHERE `user_name` = $user->user_name");
+			$this->db->bind(':new_user_name', $data['new_user_name'], PDO::PARAM_STR);
+			if ($this->db->execute())
+				return (true);
+		}
+		return (false);
+	}
+
+	public function changePassword($data){
+		$user = $this->getUserByUserEmail($data['email']);
+		if ($user){
+			//update password
+			$this->db->query("UPDATE `users` SET `password` = :new_password WHERE `email` = $user->email");
+			$this->db->bind(':new_password', $data['new_password'], PDO::PARAM_STR);
+			if ($this->db->execute())
+				return (true);
+		}
+		return (false);
+	}
+
+	public function changeProfilePhoto($data){
+		$user = $this->getUserByUserName($data['user_name']);
+		if ($user){
+			//update user name
+			$this->db->query("UPDATE `users` SET `profile_photo` = :new_profile_photo WHERE `user_name` = $user->user_name");
+			$this->db->bind(':new_profile_photo', $data['new_profile_photo'], PDO::PARAM_STR);
+			if ($this->db->execute())
+				return (true);
+		}
+		return (false);
+	}
+	
 }

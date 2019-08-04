@@ -11,9 +11,13 @@ class Pages extends Controller {
 	public function index(){
 		$posts = $this->postModel->getPosts();
 		
+		foreach($posts as $key => $post){
+			$comments = $this->postModel->getComments($post['image_id']); // get comments for this post sorted by creation date.
+			$posts[$key]['comments'] = $comments;
+		}
 		$data = [
-			'title' => 'index page',
-			'posts' => $posts,
+			'title'		=> 'index page',
+			'posts'		=> $posts,
 		];
 
 		$this->view('pages/index', $data);
