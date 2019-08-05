@@ -114,6 +114,17 @@ class User {
 		return (false);
 	}
 
+	public function getProfilePhoto($user_name){
+		$user = $this->getUserByUserName($user_name);
+		if ($user){
+			$path = $user->user_image;
+			$type = pathinfo($path, PATHINFO_EXTENSION);
+			$image = 'data:image/' . $type . ';base64,' . base64_encode(file_get_contents(APPROOT . $path));
+			return ($image);
+		}
+		return (false);
+	}
+
 	public function changeProfilePhoto($data){
 		$user = $this->getUserByUserName($data['user_name']);
 		if ($user){

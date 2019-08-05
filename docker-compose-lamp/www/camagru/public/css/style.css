@@ -2,6 +2,10 @@ body {
     background: #f0eff4;
 }
 
+body * h3 {
+	font-family: 'Courier New', Courier, monospace;
+}
+
 .skyblue {
 	background : rgb(163, 212, 216);
 }
@@ -15,11 +19,24 @@ body {
 	color : white;
 	background : #111224;
 }
-
+#add-button {
+	background: rgb(103, 103, 243);
+}
 #sitename {
 	color : white;
 	text-decoration: none;
 	transition: all .2s ease-in-out;
+}
+
+#like {
+	width : 100px;
+	height : 50px;
+	margin: 1px auto;
+}
+#delete {
+	width : 100px;
+	height : 50px;
+	margin: 1px auto;
 }
 
 #sitename:hover {
@@ -31,6 +48,12 @@ body {
 	box-shadow : none;
 }
 
+#footer-tm {
+	margin-right: 10px;
+	margin-bottom: 10px;
+	text-align: right;
+	font-family: 'Courier New', Courier, monospace;
+}
 /*
 111224
 d1d1d1
@@ -49,6 +72,20 @@ ffffff
 353C51
 */
 
+.margin-aut {
+	width : 50%;
+	text-align: center;
+}
+
+.hr-photos {
+	border: 0; 
+	height: 1px; 
+	background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+	background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+}
+
 .button {
 	float: right;
 }
@@ -60,7 +97,12 @@ ffffff
 #imageholder
 {
 	vertical-align:middle;
-	border: solid black;
+	border-radius : 5px;
+	padding : 10px;
+	margin: 1px auto;
+	width : 80%;
+	background: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .commentsbox {
@@ -79,8 +121,8 @@ ffffff
 	text-align: left;
 	padding: 10px;
 	border: 5px solid rgb(163, 212, 216);
-	margin : 1px auto;
 	border-radius : 5px;
+	margin : 1px auto;
 }
 .newcomment {
 	width : 95%;
@@ -99,9 +141,13 @@ ffffff
 .box-container {
 	padding : 10px;
 	margin: 50px auto;
-	width : 100%;
+	width : 60%;
 	background: white;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.box-container * h6 {
+	color : rgb(128, 128, 128);
 }
 
 .profile-photo {

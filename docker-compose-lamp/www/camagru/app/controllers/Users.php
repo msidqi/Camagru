@@ -224,12 +224,13 @@ class Users extends Controller {
 	}
 
 	public function profile(){
-		if ($this->isLoggedIn()){
+		if (isLoggedIn()){
 
 			$data = [
 				'title'			=> 'profile page',
 				'description'	=> 'best profile page ever',
 				'user_name'		=> $_SESSION['user_name'],
+				'profile_photo'	=> $this->userModel->getProfilePhoto($_SESSION['user_name'])
 			];
 
 			$this->view('users/profile', $data);
@@ -251,16 +252,10 @@ class Users extends Controller {
 		session_destroy();
 	}
 
-	public function isLoggedIn(){
-		if (isset($_SESSION['user_id']) && isset($_SESSION['user_name'])
-										&& isset($_SESSION['user_email']))
-			return (true);
-		else
-			return (false);
-	}
+
 
 	public function changeUserName($new_user_name){
-		if ($this->isLoggedIn() && 
+		if (isLoggedIn() && 
 		$this->userModel->userNameExists($_SESSION['user_name'])){
 			$data = [
 				'user_name'		=> $_SESSION['user_name'],
@@ -275,7 +270,7 @@ class Users extends Controller {
 	}
 
 	public function changeEmail($new_email){
-		if ($this->isLoggedIn() && 
+		if (isLoggedIn() && 
 		$this->userModel->emailExists($_SESSION['email'])){
 			$data = [
 				'email'		=> $_SESSION['email'],
@@ -290,7 +285,7 @@ class Users extends Controller {
 	}
 
 	public function changePassword($email, $new_password){
-		if ($this->isLoggedIn()){									// with login
+		if (isLoggedIn()){									// with login
 			if (preg_match('/^[0-9a-zA-Z_+=-]{5,25}$/', $new_password)){
 				$data = [
 					'email'		=> $email,
@@ -310,7 +305,7 @@ class Users extends Controller {
 	}
 
 	public function changeProfilePhoto($new_profile_photo){
-		if ($this->isLoggedIn() && 
+		if (isLoggedIn() && 
 		$this->userModel->userNameExists($_SESSION['user_name'])){
 			$data = [
 				'user_name'		=> $_SESSION['user_name'],
