@@ -11,24 +11,26 @@ class Post {
 		FROM posts INNER JOIN users ON posts.user_id = users.id 
 		ORDER BY posts.created_at DESC");
 
-		/*$allposts = $this->db->getAllResult(); // FETCH_OBJ
-		foreach ($allposts as $post){
-			$path = $post->image;
-			$type = pathinfo($path);
-			$post->image = 'data:image/' . $type . ';base64,' . base64_encode(file_get_contents(APPROOT . $path));
-		}*/
-
 		$allposts = $this->db->getAllResult(PDO::FETCH_ASSOC);
 		foreach ($allposts as $key => $value){
 			$path = $value['image'];
 			$type = pathinfo($path, PATHINFO_EXTENSION);
-			// $allposts[$key]['user_id'] = $this->db->quer;
 			$allposts[$key]['image'] = 'data:image/' . $type . ';base64,' . base64_encode(file_get_contents(APPROOT . $path));
 		}
-		// var_dump($allposts);
 		return ($allposts);
 	}
 
+	public function deletePost($image_id){
+		$this->db->query("DELETE FROM `posts` WHERE `image_id` = :image_id");
+		$this->db->bind(':image_id', $image_id);
+		if ($this->db->execute())
+			return (true);
+		return (false);
+	}
+
+	/*
+		* checks if the image is originally posted by a user.
+	*/
 	public function isFromUser($image_id, $user_id){
 		$this->db->query("SELECT `image_id`, `user_id` FROM `posts` WHERE image_id = :image_id");
 		$this->db->bind(':image_id', $image_id);

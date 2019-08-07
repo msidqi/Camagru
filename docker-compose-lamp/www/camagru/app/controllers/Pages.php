@@ -11,8 +11,10 @@ class Pages extends Controller {
 		$image_id_to_delete = key($_POST);
 		if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 			if (isLoggedIn() && $this->postModel->isFromUser($image_id_to_delete, $_SESSION['user_id'])){
-				// echo 'DELETED LOL<br>';
-				redirect('pages/index');
+				if ($this->postModel->deletePost($image_id_to_delete))
+					redirect('pages/index');
+				else
+					echo 'Something went wrong<br>';
 			}
 		}
 	}
@@ -56,5 +58,13 @@ class Pages extends Controller {
 			'description' => 'This is my php camagru-project web application, it\'s an instagram-like app the allows users to customize and take pictures, share, comment, and like other people\'s posts'
 		];
 		$this->view('pages/about', $data);
+	}
+
+	public function add(){
+		$data = [
+			'title' => 'about page',
+			'description' => 'This is my php camagru-project web application, it\'s an instagram-like app the allows users to customize and take pictures, share, comment, and like other people\'s posts'
+		];
+		$this->view('pages/addphoto', $data);
 	}
 }
