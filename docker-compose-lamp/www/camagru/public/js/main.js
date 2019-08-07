@@ -31,11 +31,9 @@ function takepicture() {
 		//context.drawImage(image, dx, dy, dWidth, dHeight);
 		//CanvasRenderingContext2D.drawImage()
 		context.drawImage(video, 0, 0, width, height);
-
-		
 		context.drawImage(image, 0, 0, 200, 200);
-
 		var data = canvas.toDataURL('image/png');
+		console.log(data);
 		photo.setAttribute('src', data);
 	} else {
 		clearphoto();
@@ -46,7 +44,7 @@ function startup() {
 	// image = document.getElementById("photo");
 	video = document.getElementById("video");
 	canvas = document.getElementById("canvas");
-	photo = document.getElementById("photo");
+	photo = document.getElementById("preview");
 	capture = document.getElementById("capture");
 
 	// check if getUserMedia is undefined
@@ -80,7 +78,7 @@ function startup() {
 			canvas.setAttribute('height', height);
 			streaming = true;
 			// console.log('height : ' + height + ' width : ' + width);
-			console.log('height : ' + video.videoHeight + ' width : ' + video.videoWidth);
+			// console.log('height : ' + video.videoHeight + ' width : ' + video.videoWidth);
 		}
 	}, false);
 
