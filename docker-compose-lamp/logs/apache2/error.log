@@ -178,3 +178,14 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
 [Wed Aug 07 13:23:45.315388 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) PHP/7.1.20 configured -- resuming normal operations
 [Wed Aug 07 13:23:45.315760 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+Not a JPEG file: starts with 0x89 0x50
+libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+[Thu Aug 08 02:13:51.538334 2019] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Thu Aug 08 12:38:06.875785 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) PHP/7.1.20 configured -- resuming normal operations
+[Thu Aug 08 12:38:06.876156 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+libpng warning: iCCP: known incorrect sRGB profile
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.3. Set the 'ServerName' directive globally to suppress this message
+[Thu Aug 08 20:09:21.481086 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) PHP/7.1.20 configured -- resuming normal operations
+[Thu Aug 08 20:09:21.481604 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'

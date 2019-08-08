@@ -75,28 +75,47 @@ class Pages extends Controller {
 	}
 
 	public function upload(){
-		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isLoggedIn()){
-			// var_dump($_FILES);
-			if (isset($_FILES['uploadedimage']) && $_FILES['uploadedimage']['error'] === 0){
-				$uploads_dir = APPROOT . '/photos/posts/';
-				$maxsize = 5 * 1024 * 1024; // 5Mb
-				$validextension = [
-					"jpg" => "image/jpg",
-					"jpeg" => "image/jpeg",
-					"gif" => "image/gif",
-					"png" => "image/png"
-				];
-				$extensions = '';
-				foreach($validextension as $key => $value){
-					$extensions = $key . ' ' . $extensions;
-				};
+		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isLoggedIn() /*&& key($_POST) > 0 && key($_POST) < 6*/){
+			$unique_name = uniqid(substr($_SESSION['user_name'], 0, 3));
+			$sticker = '/photos/superpos/megaman.png';//getStickerName(key($_POST));
+			$uploads_dir = APPROOT . '/photos/posts/';
+			$maxsize = 5 * 1024 * 1024; // 5Mb
+			$validextension = [
+				"jpg" => "image/jpg",
+				"jpeg" => "image/jpeg",
+				"gif" => "image/gif",
+				"png" => "image/png"
+			];
+			$extensions = '';
+			foreach($validextension as $key => $value){
+				$extensions = $key . ' ' . $extensions;
+			};
+			
+			if (key($_POST) == 'image' && substr($_POST['image'], 0, 22) === 'data:image/png;base64,'){
+				$decodedimg = base64_decode(substr($_POST['image'], 22, strlen($_POST['image'])));
+				$ex = substr($decodedimg , 1, 3);
+				$size = filesize(APPROOT . '/photos/posts/' . $unique_name . '.png');
+				if ($ex == 'PNG' && $size < $maxsize){
+					file_put_contents(APPROOT . '/photos/posts/' . $unique_name . '.png', $decodedimg);
+					$postpic = [
+						'user_id'		=> $_SESSION['user_id'],
+						'image'			=> '/photos/posts/' . $unique_name . '.png',
+						'image_type'	=> 'png',
+						'image_size'	=> $size,
+					];
+					if (blendImages($sticker, APPROOT . '/photos/posts/' . $unique_name . '.png')
+						&& $this->postModel->storePost($postpic)){
+						$data['error'] = '';
+					}
+				}
+			} else if (isset($_FILES['uploadedimage']) && $_FILES['uploadedimage']['error'] === 0
+					&& isset($_FILES['uploadedimage']['name']) && isset($_FILES['uploadedimage']['type'])
+					&& isset($_FILES['uploadedimage']['size']) && key($_POST) > 0 && key($_POST) < 6){
+				$sticker = getStickerName(key($_POST));
 				$imgname = $_FILES['uploadedimage']['name'];
 				$imgtype = $_FILES['uploadedimage']['type'];
 				$imgsize = $_FILES['uploadedimage']['size'];
 				$imgext = pathinfo($imgname, PATHINFO_EXTENSION);
-
-				// var_dump(getimagesize($_FILES["uploadedimage"]["tmp_name"]));
-
 				switch (1337) {
 					case !array_key_exists($imgext, $validextension):
 						$data['error'] = 'Extensions allowd : ' . $extensions;
@@ -111,7 +130,7 @@ class Pages extends Controller {
 						// change file name until it has unique name
 						// save file in photos/posts
 						// Insert into posts table
-						while (file_exists($uploads_dir . ($unique_name = uniqid(substr($_SESSION['user_name'], 0, 3) )) )){
+						while (file_exists($uploads_dir . $unique_name )){
 
 						}
 						if (touch($uploads_dir . $unique_name . '.' . $imgext) &&
@@ -122,20 +141,19 @@ class Pages extends Controller {
 								'image_type'	=> $imgext,
 								'image_size'	=> $imgsize,
 							];
-							if ($this->postModel->storePost($post)){ // dont forget to edit before storing in db for error handling
-								blendImages('megaman', $uploads_dir . $unique_name . '.' . $imgext);
+							if (blendImages($sticker, $uploads_dir . $unique_name . '.' . $imgext)
+								&& $this->postModel->storePost($post)){
 								$data['error'] = '';
-					
 							}
 							else
-								$data['error'] = 'File did not get saved.';
+								$data['error'] = 'File was not saved or edited.';
 						} else
 							$data['error'] = 'Permissions not set correctly.';
 				}
 				
 			} else {
 				$data = [
-					'error' => $_FILES['uploadedimage']['error']
+					'error' => 'Somehing went wrong'
 				];
 			}
 			redirect('pages/add');

@@ -200,7 +200,9 @@ ffffff
 	width : 100%;
 }
 
-
+#uploadedimage {
+	width: 100%;
+}
 
 #capture {
 	color : black;

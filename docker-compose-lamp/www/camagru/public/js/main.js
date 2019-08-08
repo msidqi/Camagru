@@ -6,11 +6,11 @@ var video = null;
 var canvas = null;
 var photo = null;
 var capture = null;
-
+var img = null;
 
 image = new Image;
-image.src = "http://i.imgur.com/RV2a28T.png";
-// image.src = "http://img3.wikia.nocookie.net/__cb20140805014958/monsterhunter/images/e/e6/MH10th-Rajang_Icon.png";
+// image.src = "http://i.imgur.com/RV2a28T.png";
+image.src = "http://img3.wikia.nocookie.net/__cb20140805014958/monsterhunter/images/e/e6/MH10th-Rajang_Icon.png";
 image.crossOrigin = "anonymous";  // This enables CORS
 
 function clearphoto() {
@@ -22,6 +22,7 @@ function clearphoto() {
 	photo.setAttribute('src', data);
 }
 
+
 function takepicture() {
 	var context = canvas.getContext('2d');
 	if (width && height) {
@@ -31,9 +32,10 @@ function takepicture() {
 		//context.drawImage(image, dx, dy, dWidth, dHeight);
 		//CanvasRenderingContext2D.drawImage()
 		context.drawImage(video, 0, 0, width, height);
+		img = canvas.toDataURL('image/png');
 		context.drawImage(image, 0, 0, 200, 200);
 		var data = canvas.toDataURL('image/png');
-		console.log(data);
+		// console.log(data);
 		photo.setAttribute('src', data);
 	} else {
 		clearphoto();
@@ -77,8 +79,6 @@ function startup() {
 			canvas.setAttribute('width', width);
 			canvas.setAttribute('height', height);
 			streaming = true;
-			// console.log('height : ' + height + ' width : ' + width);
-			// console.log('height : ' + video.videoHeight + ' width : ' + video.videoWidth);
 		}
 	}, false);
 
