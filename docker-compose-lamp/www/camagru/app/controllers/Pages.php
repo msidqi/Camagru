@@ -23,8 +23,10 @@ class Pages extends Controller {
 		$posts = $this->postModel->getPosts();
 
 		foreach($posts as $key => $post){
-			$comments = $this->postModel->getComments($post['image_id']); // get comments for this post sorted by creation date.
+			$comments	= $this->postModel->getComments($post['image_id']); // get comments for this post sorted by creation date ASC.
+			$likes		= $this->postModel->getLikes($post['image_id']);
 			$posts[$key]['comments'] = $comments;
+			$posts[$key]['likes'] = $likes;
 		}
 
 		$data = [
@@ -34,6 +36,15 @@ class Pages extends Controller {
 		];
 
 		$this->view('pages/index', $data);
+	}
+
+	public function like(){
+		if ($_SERVER['REQUEST_METHOD'] == "POST"
+				&& isset($_POST['image_id']) && isset($_POST['current_user'])){
+			$this->postModel->likePost($_POST['image_id'], $_POST['current_user']);
+			return (true);
+		}
+		return (false);
 	}
 
 	public function comment(){
@@ -75,7 +86,7 @@ class Pages extends Controller {
 	}
 
 	public function upload(){
-		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isLoggedIn() /*&& key($_POST) > 0 && key($_POST) < 6*/){
+		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isLoggedIn()){
 			$sticker = null;
 			$unique_name = uniqid(substr($_SESSION['user_name'], 0, 3));
 			$uploads_dir = APPROOT . '/photos/posts/';
@@ -90,7 +101,6 @@ class Pages extends Controller {
 			foreach($validextension as $key => $value){
 				$extensions = $key . ' ' . $extensions;
 			};
-			// file_put_contents(APPROOT . '/photos/aaaaFILE', $_POST['name']);
 			if (key($_POST) == 'image' && substr($_POST['image'], 0, 22) === 'data:image/png;base64,'
 				&& isset($_POST['name']) && $_POST['name'] > 0 && $_POST['name'] < 6){
 				$sticker = getStickerName($_POST['name']);
@@ -112,8 +122,7 @@ class Pages extends Controller {
 				}
 			} else if (isset($_FILES['uploadedimage']) && $_FILES['uploadedimage']['error'] === 0
 					&& isset($_FILES['uploadedimage']['name']) && isset($_FILES['uploadedimage']['type'])
-					&& isset($_FILES['uploadedimage']['size']) && key($_POST) > 0 && key($_POST) < 6){
-						// var_dump($_POST);
+						&& isset($_FILES['uploadedimage']['size']) && key($_POST) > 0 && key($_POST) < 6){
 				$sticker = getStickerName(key($_POST));
 				$imgname = $_FILES['uploadedimage']['name'];
 				$imgtype = $_FILES['uploadedimage']['type'];

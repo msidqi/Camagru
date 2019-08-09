@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
 INSERT INTO `comments` (`image_id`, `user_id`, `comment`)
 VALUES(1, 12, 'hello world');
 
-CREATE TABLE IF NOT EXIST `likes` (
+CREATE TABLE IF NOT EXISTS `likes` (
 	`image_id` INT NOT NULL,
-	`user_id` INT NOT NULL,
+	`user_id` INT NOT NULL
 );

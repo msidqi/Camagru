@@ -1,4 +1,4 @@
-<?php require_once APPROOT . '/views/include/header.php';?>
+<?php require_once APPROOT . '/views/include/header.php'; ?>
 
 	<h1>PAGES/INDEX Hello : <?php echo $data['title']; ?></h1>
 	
@@ -19,7 +19,7 @@
 
 				<div class="row">
 					<div class="col margin-aut">
-						<input type="submit" value="Like" id="like" class="btn btn-block btn-success">
+						<input type="submit" value="<?php if ($data['posts'][$key]['likes'] > 0) echo $data['posts'][$key]['likes']; else echo 'Like';?>" class="btn btn-success like" name="<?php echo $data['posts'][$key]['image_id']; ?>">
 					</div>
 					<?php if ($data['user_name'] == $data['posts'][$key]['user_name']) : ?>
 					<div class="col margin-aut">
@@ -49,3 +49,22 @@
 		</div>
 		<?php endforeach; ?>
 <?php require_once APPROOT . '/views/include/footer.php';?>
+
+<script>
+window.addEventListener('load', function(){
+	var likes = document.getElementsByClassName('like');
+
+	for (var i = 0; i < likes.length; i++){
+
+		likes[i].addEventListener('click', function(){
+			var fd = new FormData();
+			fd.append("image_id", this.getAttribute('name'));
+			fd.append("current_user", "<?php echo $_SESSION['user_name']; ?>")
+
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", 'http://localhost/camagru/pages/like');
+			xhr.send(fd);
+		}, false);
+	}
+}, false);
+</script>

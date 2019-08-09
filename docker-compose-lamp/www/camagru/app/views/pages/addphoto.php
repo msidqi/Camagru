@@ -47,9 +47,4 @@
 
 <script>
 window.addEventListener('load', startup, false);
-
-
-
-
-
 </script>

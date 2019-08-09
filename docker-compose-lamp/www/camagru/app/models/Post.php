@@ -7,9 +7,9 @@ class Post {
 	}
 
 	public function getPosts(){
-		$this->db->query("SELECT image_id, user_id, user_name, image, posts.created_at AS created_at 
+		$this->db->query("SELECT image_id, user_id, user_name, image, posts.created_at AS orders 
 		FROM posts INNER JOIN users ON posts.user_id = users.id 
-		ORDER BY posts.created_at DESC");
+		ORDER BY orders DESC");
 
 		$allposts = $this->db->getAllResult(PDO::FETCH_ASSOC);
 		foreach ($allposts as $key => $value){
@@ -21,11 +21,82 @@ class Post {
 		return ($allposts);
 	}
 
-	public function deletePost($image_id){
-		$this->db->query("DELETE FROM `posts` WHERE `image_id` = :image_id");
+	public function getLikes($image_id){
+		$this->db->query("SELECT * FROM likes WHERE image_id = :image_id");
+		$this->db->bind(':image_id', $image_id, PDO::PARAM_INT);
+		$this->db->execute();
+		return ($this->db->rowCount());
+	}
+
+	public function likePost($image_id, $user_id){
+		$this->db->query("SELECT `id` FROM users WHERE user_name = :user_name");
+		$this->db->bind(':user_name', $user_id, PDO::PARAM_STR);
+		$user_id = $this->db->getSingleResult();
+		$user_id = $user_id->id;
+		
+		$this->db->query("SELECT likes.image_id AS image_id, likes.user_id AS like_user 
+		FROM likes  INNER JOIN posts ON likes.image_id = posts.image_id 
+		WHERE posts.user_id = $user_id AND likes.image_id = :image_id");
+		$this->db->bind(':image_id', $image_id, PDO::PARAM_INT);
+		$like = $this->db->getSingleResult();
+		if ($like){
+			// file_put_contents(APPROOT . '/photos/posts/aaaaFILE', 'Done2');
+			$this->db->query("DELETE FROM likes WHERE user_id = :user_id");
+			$this->db->bind(':user_id', $user_id, PDO::PARAM_INT);
+			if ($this->db->execute())
+				return (true);
+			
+		} else {
+			// file_put_contents(APPROOT . '/photos/posts/aaaaFILE', 'Done3 ' . $image_id . ' ' . $user_id);
+			$this->db->query("INSERT INTO likes (image_id, user_id) VALUES (:image_id, :user_id)");
+			$this->db->bind(':user_id', $user_id, PDO::PARAM_INT);
+			$this->db->bind(':image_id', $image_id, PDO::PARAM_INT);
+			if ($this->db->execute())
+				return (true);
+		}
+		return (false);
+	}
+
+	public function deletePostComments($image_id){
+		$this->db->query("DELETE FROM `comments` WHERE `image_id` = :image_id");
 		$this->db->bind(':image_id', $image_id);
 		if ($this->db->execute())
 			return (true);
+		return (false);
+	}
+
+	public function deletePostLikes($image_id){
+		$this->db->query("DELETE FROM `likes` WHERE `image_id` = :image_id");
+		$this->db->bind(':image_id', $image_id);
+		if ($this->db->execute())
+			return (true);
+		return (false);
+	}
+
+	public function	deletePostFile($image_id){
+
+	}
+
+	public function getPostPath($image_id){
+		$this->db->query("SELECT `image` FROM `posts` WHERE `image_id` = :image_id");
+		$this->db->bind(':image_id', $image_id);
+		$image = $this->db->getSingleResult();
+		if ($image)
+			return ($image->image);
+		return (false);
+	}
+
+	public function deletePost($image_id){
+		$path = $this->getPostPath($image_id);
+		$this->db->query("DELETE FROM `posts` WHERE `image_id` = :image_id");
+		$this->db->bind(':image_id', $image_id);
+		if ($this->db->execute()
+				&& $this->deletePostComments($image_id)
+					&& $this->deletePostLikes($image_id)) {
+						if (is_writeable(APPROOT . $path))
+							unlink(APPROOT . $path);
+						return (true);
+		}
 		return (false);
 	}
 
@@ -74,10 +145,8 @@ class Post {
 
 	public function storePost($post){
 		$this->db->query("INSERT INTO posts 
-		SET	user_id = :user_id,
-		image = :image,
-		image_type = :image_type,
-		image_size = :image_size");
+		SET	user_id = :user_id, image = :image,
+		image_type = :image_type, image_size = :image_size");
 
 		$this->db->bind(':user_id', $post['user_id'], PDO::PARAM_INT);
 		$this->db->bind(':image', $post['image'], PDO::PARAM_STR);

@@ -126,3 +126,8 @@ function startup() {
 	
 	clearphoto();
 }
+
+
+// function like(){
+	
+// }

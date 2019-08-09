@@ -28,7 +28,7 @@ body * h3 {
 	transition: all .2s ease-in-out;
 }
 
-#like {
+.like {
 	width : 100px;
 	height : 50px;
 	margin: 1px auto;
