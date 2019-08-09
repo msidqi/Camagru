@@ -8,7 +8,7 @@
 
 		<?php foreach($data['posts'] as $key => $value) :?>
 		<hr class="hr-photos">
-		<h3><?php echo $data['posts'][$key]['user_name'] , ':';?></h3>
+		<h3 class="text-center"><?php echo $data['posts'][$key]['user_name'];?></h3>
 		<div id="imageholder">
 			
 			<div class="col">
@@ -37,7 +37,7 @@
 		<div class="commentsbox">
 			<?php foreach($data['posts'][$key]['comments'] as $comment) : ?>
 				<div class="comment">
-					<h5><?php echo $comment['name'] . ' : ' . $comment['comment'] ?></h5>
+					<h5><strong><?php echo $comment['name'] . ' : ';?></strong><?php echo $comment['comment']; ?></h5>
 				</div>
 			<?php endforeach;?>
 			<div class="newcomment">
