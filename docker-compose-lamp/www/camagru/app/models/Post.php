@@ -73,10 +73,6 @@ class Post {
 		return (false);
 	}
 
-	public function	deletePostFile($image_id){
-
-	}
-
 	public function getPostPath($image_id){
 		$this->db->query("SELECT `image` FROM `posts` WHERE `image_id` = :image_id");
 		$this->db->bind(':image_id', $image_id);
@@ -134,10 +130,8 @@ class Post {
 	}
 
 	public function storeComment($image_id, $user_id, $comment){
-		
 		$this->db->query("INSERT INTO `comments` (`image_id`, `user_id`, `comment`) VALUES($image_id, $user_id, :comment)");
 		$this->db->bind(':comment', $comment, PDO::PARAM_STR);
-
 		if ($this->db->execute())
 			return (true);
 		return (false);
@@ -152,7 +146,6 @@ class Post {
 		$this->db->bind(':image', $post['image'], PDO::PARAM_STR);
 		$this->db->bind(':image_type', $post['image_type'], PDO::PARAM_STR);
 		$this->db->bind(':image_size', $post['image_size'], PDO::PARAM_INT);
-
 		if ($this->db->execute())
 			return (true);
 		return (false);

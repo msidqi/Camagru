@@ -16,6 +16,8 @@ class Pages extends Controller {
 				else
 					echo 'Something went wrong<br>';
 			}
+		} else {
+			redirect('users/login');
 		}
 	}
 
@@ -44,7 +46,7 @@ class Pages extends Controller {
 			$this->postModel->likePost($_POST['image_id'], $_POST['current_user']);
 			return (true);
 		}
-		return (false);
+		redirect('users/login');
 	}
 
 	public function comment(){
@@ -57,10 +59,10 @@ class Pages extends Controller {
 					redirect('pages/index');
 				}
 			} else {
-				$this->view('users/login', $data = []);
+				redirect('users/login');
 			}
 		}
-		$this->view('users/login', $data = []);
+		redirect('users/login');
 	}
 
     public function about(){
@@ -73,7 +75,7 @@ class Pages extends Controller {
 
 	public function add(){
 		if (!isLoggedIn()){
-			$this->view('users/login', $data = []);
+			redirect('users/login');
 		} else {
 			$posts = $this->postModel->getAllUserPosts($_SESSION['user_name']);
 
@@ -168,10 +170,10 @@ class Pages extends Controller {
 					'error' => 'Somehing went wrong'
 				];
 			}
-			redirect('pages/add');
+			redirect('users/login');
 			// $this->view('pages/addphoto', $data); // error during processing
 		} else {
-			redirect('pages/add'); // not POST
+			redirect('users/login'); // not POST
 		}
 	}
 }

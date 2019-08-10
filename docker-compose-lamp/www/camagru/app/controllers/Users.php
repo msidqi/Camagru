@@ -195,7 +195,7 @@ class Users extends Controller {
 				$user = $this->userModel->loginUser($data);
 				if ($user && $user->verified == '1'){
 					// start session
-					$this->createUserSession($user);
+					createUserSession($user);
 					redirect('pages/index');
 				} else {
 					if ($user->verified == '0')
@@ -225,7 +225,7 @@ class Users extends Controller {
 
 
 	public function logout(){
-		$this->destroyUserSession();
+		destroyUserSession();
 		redirect('users/login');
 	}
 
@@ -241,26 +241,11 @@ class Users extends Controller {
 
 			$this->view('users/profile', $data);
 		} else {
-			$this->view('users/login');
+			redirect('users/login');
 		}
 	}
 
-	public function createUserSession($user){
-		$_SESSION['user_id'] = $user->id;
-		$_SESSION['user_name'] = $user->user_name;
-		$_SESSION['user_email'] = $user->email;
-	}
-
-	public function destroyUserSession(){
-		unset($_SESSION['user_id']);
-		unset($_SESSION['user_name']);
-		unset($_SESSION['user_email']);
-		session_destroy();
-	}
-
-
-
-	public function changeUserName($new_user_name){
+	public function changeUserName($new_user_name = null){
 		if (isLoggedIn() && 
 		$this->userModel->userNameExists($_SESSION['user_name'])){
 			$data = [
@@ -272,7 +257,7 @@ class Users extends Controller {
 				redirect('users/profile');
 			}
 		}
-		echo "Error changing user_name<br>";
+		redirect('users/login');
 	}
 
 	public function changeEmail($new_email){
@@ -287,12 +272,12 @@ class Users extends Controller {
 				redirect('users/profile');
 			}
 		}
-		echo "Error changing email<br>";
+		redirect('users/login');
 	}
 
-	public function changePassword($email, $new_password){
-		if (isLoggedIn()){									// with login
-			if (preg_match('/^[0-9a-zA-Z_+=-]{5,25}$/', $new_password)){
+	public function changePassword($email, $new_password = null){
+		if (isLoggedIn()){							// with login
+			if (preg_match('/^[0-9a-zA-Z_+=-]{5,25}$/', $new_password)){ // change regex
 				$data = [
 					'email'		=> $email,
 					'new_password'	=> password_hash($new_password, PASSWORD_DEFAULT)
@@ -307,10 +292,10 @@ class Users extends Controller {
 			/*if ($this->userModel->changePassword($email, $new_password))
 				return (true);*/
 		}
-		echo "Error changing password<br>";
+		redirect('users/login');
 	}
 
-	public function changeProfilePhoto($new_profile_photo){
+	public function changeProfilePhoto($new_profile_photo = null){
 		if (isLoggedIn() && 
 		$this->userModel->userNameExists($_SESSION['user_name'])){
 			$data = [
@@ -321,6 +306,6 @@ class Users extends Controller {
 				redirect('users/profile');
 			}
 		}
-		echo "Error changing profile pic<br>";
+		redirect('users/login');
 	}
 }

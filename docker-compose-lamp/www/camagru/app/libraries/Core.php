@@ -19,14 +19,7 @@ class Core {
 			//Call the appropriate Method if it exists
 			if (method_exists($this->currentController, $url[1])){
 				$this->currentMethod = $url[1];
-			}/* else {					//is_callable( [$this->currentController, $url[1]] )z
-				unset($this->currentController);
-				$this->currentController = 'Pages';
-				$this->$currentMethod = 'index';
-				require_once '../app/controllers/' . $this->currentController . '.php';
-				$this->currentController = new $this->currentController;
-				$this->params = [];
-			}*/
+			}
 			unset($url[1]);
 		}
 		$this->params = $url ? array_values($url) : []; // pass the rest as parameters if they exist (controller and method are unset).
