@@ -10,10 +10,7 @@ var img = null;
 
 image = new Image;
 image.src = "http://i.imgur.com/RV2a28T.png";
-// image.src = "http://img3.wikia.nocookie.net/__cb20140805014958/monsterhunter/images/e/e6/MH10th-Rajang_Icon.png";
-// image.src = "http://3.bp.blogspot.com/-GOT_6c04LPY/U9uA7aZqWmI/AAAAAAAAAZw/4hCLLQh_CJk/s1600/j.png";
-image.crossOrigin = "anonymous";  // This enables CORS
-
+image.crossOrigin = "anonymous";
 function clearphoto() {
 	var context = canvas.getContext('2d');
 	context.fillStyle = "#AAA";
@@ -48,6 +45,8 @@ function startup() {
 	photo = document.getElementById("preview");
 	capture = document.getElementById("capture");
 	document.getElementById("capture").disabled = true;
+	document.getElementById("pic").disabled = true;
+	document.getElementById("sticker").disabled = true;
 		
 	// check if getUserMedia is undefined
 	if (navigator.mediaDevices.getUserMedia) {
@@ -84,7 +83,7 @@ function startup() {
 
 	capture.addEventListener('click', function(event){
 		takepicture();
-		event.preventDefault(); // only take the event once per click.
+		event.preventDefault();
 	});
 
 	// enables capture button when clicked on any sticker.
@@ -104,30 +103,19 @@ function startup() {
 			else if (name == 5)
 				image.src = "https://i.imgur.com/ZZZ2VUn.png";
 			document.getElementById("capture").disabled = false;
+			document.getElementById("pic").disabled = false;
+			document.getElementById("sticker").disabled = false;
 			document.getElementById("sticker").setAttribute("name", this.getAttribute("name"));
 			document.getElementById("pic").setAttribute("name", this.getAttribute("name"));
 		}, false);
 	}
-
-	// sends POST request 
 	document.getElementById("pic").addEventListener('click', function(e) {
 		var fd = new FormData();
 		fd.append("image", img);
 		fd.append("name", document.getElementById('sticker').getAttribute('name'));
 		var xhr = new XMLHttpRequest();
-	
-		// xhr.addEventListener('load', function (e) {
-		// 		response from server.
-		// 		alert('hello world');
-		// })
 		xhr.open("POST", 'http://localhost/camagru/pages/upload');
 		xhr.send(fd);
 	}, false);
-	
 	clearphoto();
 }
-
-
-// function like(){
-	
-// }

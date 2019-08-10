@@ -8,7 +8,6 @@ class Users extends Controller {
 	}
 
 	public function register(){ // should redirect to index page if user already registered
-
 		// if the incoming request is of type $_POST[], process it.
 		// else load the form
 		if ($_SERVER['REQUEST_METHOD'] == 'POST'){ // if POST request, run the validation proccess.
@@ -74,7 +73,7 @@ class Users extends Controller {
 					case strlen($_POST['password']) < 5 :
 						$data['password_error'] = 'Your password should be 5 characters or longer';
 						break ;
-					case !preg_match('/^[0-9a-zA-Z_+=-]{5,25}$/', $_POST['password']) :
+					case !preg_match('/^(?=.*\d)(?=.*[A-Za-z])[A-Za-z\d]{5,25}$/', $_POST['password']) :
 						$data['password_error'] = 'Your password should contain only character from A-Z, a-z, 0-9, _, -, +, =';	
 						break ;
 					default :
@@ -100,7 +99,8 @@ class Users extends Controller {
 				
 				$data['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 				if ($this->userModel->registerUser($data)){
-					// mail($data['email'], 'Registration success', 'yeet');
+					// $subject = URLROOT . '/users/login?xjk=' . base64_encode($user_id) . '&hr=' . md5($user_name);
+					// mail($data['email'], 'Registration success', 'yeet'); URLROOT . /users/login?xjk=base64encript(user_id)&hr=md5(user_name) 
 					redirect('users/login'); // redirect through url to login page
 				} else {
 					$data['name_error'] = 'Something went wrong!!!';
@@ -182,7 +182,7 @@ class Users extends Controller {
 				$data['password_error'] = 'Please enter your password.';
 			} else {
 				switch (1337) {
-					case !preg_match('/^[0-9a-zA-Z_+=-]{5,25}$/', $_POST['password']) :
+					case !preg_match('/^[0-9a-zA-Z_+=-]{5,25}$/', $_POST['password']) : // dont forget to regex ^(?=.*\d)(?=.*[A-Za-z])[A-Za-z\d]{5,25}$
 						$data['password_error'] = 'Incorrect password.';	
 						break ;
 					default :
@@ -193,18 +193,24 @@ class Users extends Controller {
 			// if user input is correct, check if it exists in database then login. else reload page with appropriate errors
 			if (empty($data['name_or_email_error'])	&& empty($data['password_error'])){
 				$user = $this->userModel->loginUser($data);
-				if ($user){
+				if ($user && $user->verified == '1'){
 					// start session
-					/*if (mail('vezoviro@mail-fix.com', 'Registration success', 'yeet'))
-						echo "email sent<br>";*/
 					$this->createUserSession($user);
 					redirect('pages/index');
 				} else {
-					$data['password_error'] = 'Incorrect password';
+					if ($user->verified == '0')
+						$data['password_error'] = 'A verification email has been sent to your email.';
+					else
+						$data['password_error'] = 'Incorrect password';
 					$this->view('users/login', $data);
 				}
 			} else
 				$this->view('users/login', $data);
+		} else if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['xjk']) && isset($_GET['hr'])) {////////
+			$user = $this->userModel->getUserById(base64_decode($_GET['xjk']));
+			if ($user && md5($user->user_name) === $_GET['hr'])
+				$this->userModel->verifyUser($user->id);
+				redirect('users/login');
 		} else {
 			$data = [
 				'user_name'				=> '',
@@ -317,9 +323,4 @@ class Users extends Controller {
 		}
 		echo "Error changing profile pic<br>";
 	}
-
-	public function verifyUser(){
-
-	}
-
 }

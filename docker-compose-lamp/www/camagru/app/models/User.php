@@ -38,6 +38,17 @@ class User {
 		return (false);
 	}
 
+	public function getUserById($user_id){
+		$this->db->query('SELECT `id`, `user_name` FROM `users` WHERE `id` = :user_id');
+		$this->db->bind(':user_id', $user_id, PDO::PARAM_STR);
+
+		// object containing the found user row.
+		$user = $this->db->getSingleResult();
+		if ($user)
+			return ($user);
+		return (false);
+	}
+
 	public function getUserByUserName($user_name){
 		$this->db->query('SELECT * FROM `users` WHERE `user_name` = :user_name');
 		$this->db->bind(':user_name', $user_name, PDO::PARAM_STR);
@@ -56,6 +67,13 @@ class User {
 		$this->db->bind(':email', $data['email'], PDO::PARAM_STR);
 		$this->db->bind(':password', $data['password'], PDO::PARAM_STR);
 
+		if ($this->db->execute())
+			return (true);
+		return (false);
+	}
+
+	public function verifyUser($user_id){
+		$this->db->query("UPDATE users SET `verified` = B'1' WHERE id = $user_id");
 		if ($this->db->execute())
 			return (true);
 		return (false);
