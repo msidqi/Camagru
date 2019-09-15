@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
 INSERT INTO `users` (user_name, email, password, verified)
 VALUES
 ('mouad', 'mouad@gmail.com', '123456', B'1'),
-('Loool', 'loool@gmail.com', '123456', B'1'),
+('Loool', 'loool@gmail.com', '123456', B'1');
 
 
 INSERT INTO `posts` (`user_id`, `image`, image_type, image_size)

@@ -46,7 +46,8 @@ class Pages extends Controller {
 			$this->postModel->likePost($_POST['image_id'], $_POST['current_user']);
 			return (true);
 		}
-		redirect('users/login');
+		else
+			redirect('users/login');
 	}
 
 	public function comment(){
@@ -62,7 +63,8 @@ class Pages extends Controller {
 				redirect('users/login');
 			}
 		}
-		redirect('users/login');
+		else
+			redirect('users/login');
 	}
 
     public function about(){
