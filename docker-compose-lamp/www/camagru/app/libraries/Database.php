@@ -13,8 +13,8 @@ class Database {
     private $error;
 
     public function __construct(){
-      
-		$dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname . ';port=3306';
+
+		$dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
 		$options = array(
 			PDO::ATTR_PERSISTENT => true,
 			PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -69,6 +69,11 @@ class Database {
 	public function getSingleResult(){
 		$this->stmt->execute();
 		return ($this->stmt->fetch());
+	}
+
+
+	public function lastInsertId(){
+		return ($this->pdo->lastInsertId());
 	}
 
 	public function rowCount(){

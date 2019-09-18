@@ -1,29 +1,18 @@
 <?php
-session_start();
 class Pages extends Controller {
 	private $postModel;
 
 	public function __construct(){
 		$this->postModel = $this->model('Post');
 	}
-	
-	public function	delete(){
-		$image_id_to_delete = key($_POST);
-		if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-			if (isLoggedIn() && $this->postModel->isFromUser($image_id_to_delete, $_SESSION['user_id'])){
-				if ($this->postModel->deletePost($image_id_to_delete))
-					redirect('pages/index');
-				else
-					echo 'Something went wrong<br>';
-			}
-		} else {
-			redirect('users/login');
-		}
-	}
 
 	public function index(){
-		$posts = $this->postModel->getPosts();
-
+		if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['page']) && $_GET['page'] > 0)
+			$offset = 5 * ($_GET['page'] - 1);
+		else
+			$offset = 0;
+		$posts = $this->postModel->getPostsPaged($offset); // https://stackoverflow.com/questions/3799193/mysql-data-best-way-to-implement-paging
+		// var_dump($posts);
 		foreach($posts as $key => $post){
 			$comments	= $this->postModel->getComments($post['image_id']); // get comments for this post sorted by creation date ASC.
 			$likes		= $this->postModel->getLikes($post['image_id']);
@@ -32,6 +21,7 @@ class Pages extends Controller {
 		}
 
 		$data = [
+			'page_number' => $page_number,
 			'title'		=> 'index page',
 			'posts'		=> $posts,
 			'user_name'	=> $_SESSION['user_name'],
@@ -41,7 +31,7 @@ class Pages extends Controller {
 	}
 
 	public function like(){
-		if ($_SERVER['REQUEST_METHOD'] == "POST"
+		if ($_SERVER['REQUEST_METHOD'] == 'POST'
 				&& isset($_POST['image_id']) && isset($_POST['current_user'])){
 			$this->postModel->likePost($_POST['image_id'], $_POST['current_user']);
 			return (true);
@@ -83,9 +73,30 @@ class Pages extends Controller {
 
 			$data = [
 				'title' => 'add photo page',
-				'posts'		=> $posts
+				'posts'		=> $posts,
+				'stickers'	=> [
+					0 => '../app/photos/superpos/megaman.png',
+					1 => '../app/photos/superpos/melon.png ',
+					2 => '../app/photos/superpos/rajang.png',
+					3 => '../app/photos/superpos/ayano.png',
+					4 => '../app/photos/superpos/scumbag.png',
+				]
 			];
 			$this->view('pages/addphoto', $data);
+		}
+	}
+
+	public function	delete(){
+		$image_id_to_delete = key($_POST);
+		if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+			if (isLoggedIn() && $this->postModel->isFromUser($image_id_to_delete, $_SESSION['user_id'])){
+				if ($this->postModel->deletePost($image_id_to_delete))
+					redirect('pages/index');
+				else
+					echo 'Something went wrong<br>';
+			}
+		} else {
+			redirect('users/login');
 		}
 	}
 
@@ -171,9 +182,9 @@ class Pages extends Controller {
 				$data = [
 					'error' => 'Somehing went wrong'
 				];
+				$this->view('pages/add', $data); // error during processing
 			}
-			redirect('users/login');
-			// $this->view('pages/addphoto', $data); // error during processing
+			redirect('pages/add');
 		} else {
 			redirect('users/login'); // not POST
 		}

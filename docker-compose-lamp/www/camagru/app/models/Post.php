@@ -21,6 +21,21 @@ class Post {
 		return ($allposts);
 	}
 
+	public function getPostsPaged($offset){
+		$this->db->query("SELECT image_id, user_id, user_name, image, posts.created_at AS orders 
+		FROM posts INNER JOIN users ON posts.user_id = users.id 
+		ORDER BY orders DESC LIMIT $offset,5");
+
+		$allposts = $this->db->getAllResult(PDO::FETCH_ASSOC);
+		foreach ($allposts as $key => $value){
+			$path = $value['image'];
+			$type = pathinfo($path, PATHINFO_EXTENSION);
+			if (file_exists(APPROOT . $path))
+				$allposts[$key]['image'] = 'data:image/' . $type . ';base64,' . base64_encode(file_get_contents(APPROOT . $path));
+		}
+		return ($allposts);
+	}
+
 	public function getLikes($image_id){
 		$this->db->query("SELECT * FROM likes WHERE image_id = :image_id");
 		$this->db->bind(':image_id', $image_id, PDO::PARAM_INT);

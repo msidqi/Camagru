@@ -19,8 +19,16 @@ class Core {
 			//Call the appropriate Method if it exists
 			if (method_exists($this->currentController, $url[1])){
 				$this->currentMethod = $url[1];
+			} else {
+				$this->currentController = 'Pages';
+				require_once '../app/controllers/' . $this->currentController . '.php'; // if the previous if-conditions fails, require Default controller, otherwise use the requested one
+				$this->currentController = new $this->currentController;
 			}
 			unset($url[1]);
+		} else {
+			$this->currentController = 'Pages';
+			require_once '../app/controllers/' . $this->currentController . '.php'; // if the previous if-conditions fails, require Default controller, otherwise use the requested one
+			$this->currentController = new $this->currentController;
 		}
 		$this->params = $url ? array_values($url) : []; // pass the rest as parameters if they exist (controller and method are unset).
 		call_user_func_array([$this->currentController, $this->currentMethod], $this->params);

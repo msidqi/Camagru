@@ -40,12 +40,23 @@ class User {
 
 	public function getUserById($user_id){
 		$this->db->query('SELECT `id`, `user_name` FROM `users` WHERE `id` = :user_id');
-		$this->db->bind(':user_id', $user_id, PDO::PARAM_STR);
+		$this->db->bind(':user_id', $user_id);
 
 		// object containing the found user row.
 		$user = $this->db->getSingleResult();
 		if ($user)
 			return ($user);
+		return (false);
+	}
+
+	public function getUserId($user_name){
+		$this->db->query('SELECT `id` FROM `users` WHERE `user_name` = :user_name');
+		$this->db->bind(':user_name', $user_name);
+
+		// object containing the found user row.
+		$user = $this->db->getSingleResult();
+		if ($user)
+			return ($user->id);
 		return (false);
 	}
 

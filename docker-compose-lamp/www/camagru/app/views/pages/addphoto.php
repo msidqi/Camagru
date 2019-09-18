@@ -16,18 +16,18 @@
 			</div>
 
 			<div class="row margin-auto">
-				<h4><?php echo $data['error']; ?></h4>
+				<h4><?php if (!empty($data['error'])) echo $data['error']; ?></h4>
 				<form method="post" action="<?php echo URLROOT . '/pages/upload'; ?>" enctype="multipart/form-data">
 					<input type="file" class="col"  name="uploadedimage" id="uploadedimage" accept="image/*">
 					<input class="col" type="submit" value="Upload" id="sticker" name="4">
 				</form>
 			</div>
 			<div class="row">
-			<div class="col"><input class="sticker" type="image" src="http://i.imgur.com/RV2a28T.png" /></div>
-			<div class="col"><input class="sticker" type="image" src="http://3.bp.blogspot.com/-GOT_6c04LPY/U9uA7aZqWmI/AAAAAAAAAZw/4hCLLQh_CJk/s1600/j.png" /></div>
-			<div class="col"><input class="sticker" type="image" src="http://img3.wikia.nocookie.net/__cb20140805014958/monsterhunter/images/e/e6/MH10th-Rajang_Icon.png" /></div>
-			<div class="col"><input class="sticker" type="image" src="https://shortcut-test2.s3.amazonaws.com/uploads/project/attachment/8605/default_chibiyandere.png" /></div>
-			<div class="col"><input class="sticker" type="image" src="https://i.imgur.com/ZZZ2VUn.png" /></div>
+			<div class="col"><input class="sticker" type="image" src="<?php echo 'data:image/png;base64,' . base64_encode(file_get_contents('../app/photos/superpos/megaman.png')); ?>" /></div>
+			<div class="col"><input class="sticker" type="image" src="<?php echo 'data:image/png;base64,' . base64_encode(file_get_contents('../app/photos/superpos/melon.png')); ?>" /></div>
+			<div class="col"><input class="sticker" type="image" src="<?php echo 'data:image/png;base64,' . base64_encode(file_get_contents('../app/photos/superpos/rajang.png')); ?>" /></div>
+			<div class="col"><input class="sticker" type="image" src="<?php echo 'data:image/png;base64,' . base64_encode(file_get_contents('../app/photos/superpos/ayano.png')); ?>" /></div>
+			<div class="col"><input class="sticker" type="image" src="<?php echo 'data:image/png;base64,' . base64_encode(file_get_contents('../app/photos/superpos/scumbag.png')); ?>" /></div>
 			</div>
 		</div>
 
@@ -46,5 +46,12 @@
 <?php require APPROOT . '/views/include/footer.php'?>
 
 <script>
+var im = [
+	'<?php echo 'data:image/png;base64,' . base64_encode(file_get_contents('../app/photos/superpos/megaman.png')); ?>',
+	'<?php echo 'data:image/png;base64,' . base64_encode(file_get_contents('../app/photos/superpos/melon.png')); ?>',
+	'<?php echo 'data:image/png;base64,' . base64_encode(file_get_contents('../app/photos/superpos/rajang.png')); ?>',
+	'<?php echo 'data:image/png;base64,' . base64_encode(file_get_contents('../app/photos/superpos/ayano.png')); ?>',
+	'<?php echo 'data:image/png;base64,' . base64_encode(file_get_contents('../app/photos/superpos/scumbag.png')); ?>'
+];
 window.addEventListener('load', startup, false);
 </script>

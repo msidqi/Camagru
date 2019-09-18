@@ -1,5 +1,4 @@
 <?php
-session_start();
 class Users extends Controller {
 	private $userModel;
 
@@ -96,11 +95,10 @@ class Users extends Controller {
 			// registration data is good. send query to model. else reload register page with appropriate errors.
 			if (empty($data['name_error']) && empty($data['email_error'])
 				&& empty($data['password_error']) && empty($data['confirm_password_error'])){
-				
 				$data['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 				if ($this->userModel->registerUser($data)){
 					// $subject = URLROOT . '/users/login?xjk=' . base64_encode($user_id) . '&hr=' . md5($user_name);
-					// mail($data['email'], 'Registration success', 'yeet'); URLROOT . /users/login?xjk=base64encript(user_id)&hr=md5(user_name) 
+					mail($data['email'], 'Verify email', 'Hello ' . $data['user_name'] . ' please verify your email by visiting this link :' . PHP_EOL . URLROOT . '/users/login?xjk=' . base64_encode($this->userModel->getUserId($data['user_name'])) . '&hr=' . md5($data['user_name']));
 					redirect('users/login'); // redirect through url to login page
 				} else {
 					$data['name_error'] = 'Something went wrong!!!';
@@ -125,7 +123,7 @@ class Users extends Controller {
 	}
 
 	public function login(){
-		if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$user_name = trim($_POST['user_name/email']);
 			$email = trim($_POST['user_name/email']);
 
@@ -137,7 +135,7 @@ class Users extends Controller {
 				'password_error'		=> ''
 			];
 
-			if (empty($user_name) && empty($email)){
+			if (empty($user_name) && empty($email)) {
 				$data['name_or_email_error'] = 'Please enter your email or user name.';
 			} else {
 				switch (1337) {
@@ -183,7 +181,7 @@ class Users extends Controller {
 			} else {
 				switch (1337) {
 					case !preg_match('/^[0-9a-zA-Z_+=-]{5,25}$/', $_POST['password']) : // dont forget to regex ^(?=.*\d)(?=.*[A-Za-z])[A-Za-z\d]{5,25}$
-						$data['password_error'] = 'Incorrect password.';	
+						$data['password_error'] = 'Incorrect password.';
 						break ;
 					default :
 						$data['password'] = $_POST['password'];
@@ -208,9 +206,9 @@ class Users extends Controller {
 				$this->view('users/login', $data);
 		} else if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['xjk']) && isset($_GET['hr'])) {////////
 			$user = $this->userModel->getUserById(base64_decode($_GET['xjk']));
-			if ($user && md5($user->user_name) === $_GET['hr'])
-				$this->userModel->verifyUser($user->id);
-				redirect('users/login');
+			if ($user && md5($user->user_name) === $_GET['hr']){
+				$this->userModel->verifyUser($user->id);}
+			$this->view('users/login', $data);
 		} else {
 			$data = [
 				'user_name'				=> '',

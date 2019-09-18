@@ -93,15 +93,15 @@ function startup() {
 		stickers[i].addEventListener('click', function(e){
 			var name = document.getElementById('sticker').getAttribute('name');
 			if (name == 1)
-			image.src = "http://i.imgur.com/RV2a28T.png";
+			image.src = im[0];
 			else if (name == 2)
-				image.src = "http://3.bp.blogspot.com/-GOT_6c04LPY/U9uA7aZqWmI/AAAAAAAAAZw/4hCLLQh_CJk/s1600/j.png";
+				image.src = im[1];
 			else if (name == 3)
-				image.src = "http://img3.wikia.nocookie.net/__cb20140805014958/monsterhunter/images/e/e6/MH10th-Rajang_Icon.png";
+				image.src = im[2];
 			else if (name == 4)
-				image.src = "https://shortcut-test2.s3.amazonaws.com/uploads/project/attachment/8605/default_chibiyandere.png";
+				image.src = im[3];
 			else if (name == 5)
-				image.src = "https://i.imgur.com/ZZZ2VUn.png";
+				image.src = im[4];
 			document.getElementById("capture").disabled = false;
 			document.getElementById("pic").disabled = false;
 			document.getElementById("sticker").disabled = false;
@@ -110,12 +110,14 @@ function startup() {
 		}, false);
 	}
 	document.getElementById("pic").addEventListener('click', function(e) {
+		// var root = <?php echo 'http://localhost/camagru/'; ?>;
 		var fd = new FormData();
 		fd.append("image", img);
 		fd.append("name", document.getElementById('sticker').getAttribute('name'));
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", 'http://localhost/camagru/pages/upload');
 		xhr.send(fd);
+
 	}, false);
 	clearphoto();
 }

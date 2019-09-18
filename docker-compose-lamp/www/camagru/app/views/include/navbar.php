@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <div class="navbar">
 	<a id='sitename' href=<?php echo URLROOT;?>> <?php echo SITENAME ?> </a>
 	<?php if (!empty($_SESSION['user_id']) && !empty($_SESSION['user_name']) && !empty($_SESSION['user_email'])) : ?>
