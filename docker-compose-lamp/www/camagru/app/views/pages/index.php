@@ -1,13 +1,11 @@
 <?php require_once APPROOT . '/views/include/header.php'; ?>
 
-	<h1>PAGES/INDEX Hello : <?php echo $data['title']; ?></h1>
-	
 	<?php if (!empty($data['user_name'])) :?>
-		<a href="<?php echo URLROOT . '/pages/add';?>"><button class="button btn-block">add photo</button></a><br>
+		<a href="<?php echo URLROOT . '/pages/add';?>"><button id="addphoto" class="button btn-block">add photo</button></a><br>
 	<?php endif; ?>
 
 		<?php foreach($data['posts'] as $key => $value) :?>
-		<hr class="hr-photos">
+	<?php if ($key > 0) : ?> <hr class="hr-photos"> <?php endif; ?>
 		<h3 class="text-center"><?php echo $data['posts'][$key]['user_name'];?></h3>
 		<div id="imageholder">
 			
@@ -48,6 +46,16 @@
 			</div>
 		</div>
 		<?php endforeach; ?>
+		
+		<div class="paging-container row">
+		<?php for ($i = 0; $i < $data['number_of_pages']; $i++) :?>
+			<?php if ($data['current_page'] == $i + 1) : ?>
+				<form method="GET"><button class="paging-number-current btn" type="submit" name="page" value="<?php echo $i + 1?>"><?php echo $i + 1 ?></button></form>
+			<?php else : ?>
+				<form method="GET"><button class="paging-number btn" type="submit" method="GET" name="page" value="<?php echo $i + 1?>"><?php echo $i + 1 ?></button></form>
+			<?php endif; ?>
+		<?php endfor; ?>
+		</div>
 <?php require_once APPROOT . '/views/include/footer.php';?>
 
 <script>
@@ -59,7 +67,7 @@ window.addEventListener('load', function(){
 		likes[i].addEventListener('click', function(){
 			var fd = new FormData();
 			fd.append("image_id", this.getAttribute('name'));
-			fd.append("current_user", "<?php echo $_SESSION['user_name']; ?>")
+			fd.append("current_user", "<?php if (!empty($_SESSION['user_name']))echo $_SESSION['user_name']; ?>")
 
 			var xhr = new XMLHttpRequest();
 			xhr.open("POST", 'http://localhost/camagru/pages/like');

@@ -9,8 +9,8 @@ var capture = null;
 var img = null;
 
 image = new Image;
-image.src = "http://i.imgur.com/RV2a28T.png";
-image.crossOrigin = "anonymous";
+// image.src = "http://i.imgur.com/RV2a28T.png";
+// image.crossOrigin = "anonymous";
 function clearphoto() {
 	var context = canvas.getContext('2d');
 	context.fillStyle = "#AAA";
@@ -93,7 +93,7 @@ function startup() {
 		stickers[i].addEventListener('click', function(e){
 			var name = document.getElementById('sticker').getAttribute('name');
 			if (name == 1)
-			image.src = im[0];
+				image.src = im[0];
 			else if (name == 2)
 				image.src = im[1];
 			else if (name == 3)
@@ -110,7 +110,6 @@ function startup() {
 		}, false);
 	}
 	document.getElementById("pic").addEventListener('click', function(e) {
-		// var root = <?php echo 'http://localhost/camagru/'; ?>;
 		var fd = new FormData();
 		fd.append("image", img);
 		fd.append("name", document.getElementById('sticker').getAttribute('name'));

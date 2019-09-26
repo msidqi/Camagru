@@ -21,11 +21,19 @@ class Post {
 		return ($allposts);
 	}
 
+	public function getNumberOfPages(){
+		$this->db->query("SELECT image_id FROM posts");
+
+		$allposts = $this->db->getAllResult(PDO::FETCH_ASSOC);
+		return ((int)(ceil($this->db->rowCount() / 5)));
+	}
+
 	public function getPostsPaged($offset){
 		$this->db->query("SELECT image_id, user_id, user_name, image, posts.created_at AS orders 
 		FROM posts INNER JOIN users ON posts.user_id = users.id 
-		ORDER BY orders DESC LIMIT $offset,5");
+		ORDER BY orders DESC LIMIT :offset,5");
 
+		$this->db->bind(':offset', $offset);
 		$allposts = $this->db->getAllResult(PDO::FETCH_ASSOC);
 		foreach ($allposts as $key => $value){
 			$path = $value['image'];
@@ -46,7 +54,8 @@ class Post {
 	public function likePost($image_id, $user_id){
 		$this->db->query("SELECT `id` FROM users WHERE user_name = :user_name");
 		$this->db->bind(':user_name', $user_id, PDO::PARAM_STR);
-		$user_id = $this->db->getSingleResult();
+		if (!($user_id = $this->db->getSingleResult()))
+			return (false);	
 		$user_id = $user_id->id;
 		
 		$this->db->query("SELECT likes.image_id AS image_id, likes.user_id AS like_user 

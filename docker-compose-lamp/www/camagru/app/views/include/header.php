@@ -10,8 +10,9 @@
     
 	<link rel="stylesheet" href="<?php echo URLROOT; ?>/public/css/style.css">
     <title><?php echo SITENAME; ?></title>
+    <link rel="shortcut icon" href=" <?php  echo URLROOT; ?>/public/logo.png">
 </head>
 <body>
 
 	<?php require APPROOT . '/views/include/navbar.php' ?>
-<div class="container">
+    <div class="container wrapper">

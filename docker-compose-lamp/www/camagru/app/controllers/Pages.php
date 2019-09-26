@@ -7,24 +7,36 @@ class Pages extends Controller {
 	}
 
 	public function index(){
-		if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['page']) && $_GET['page'] > 0)
+		var_dump(dirname(dirname(__FILE__)));
+		if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0) {
 			$offset = 5 * ($_GET['page'] - 1);
-		else
+			$page_number = $_GET['page'];
+		} else {
 			$offset = 0;
-		$posts = $this->postModel->getPostsPaged($offset); // https://stackoverflow.com/questions/3799193/mysql-data-best-way-to-implement-paging
-		// var_dump($posts);
+			$page_number = 1;
+		}
+		if (empty($posts = $this->postModel->getPostsPaged($offset))){
+			$posts = $this->postModel->getPostsPaged(0);
+			$page_number = 1;
+		}
+		if (!empty($_SESSION['user_name']))
+			$user_name = $_SESSION['user_name'];
+		else
+			$user_name = '';
+
 		foreach($posts as $key => $post){
 			$comments	= $this->postModel->getComments($post['image_id']); // get comments for this post sorted by creation date ASC.
 			$likes		= $this->postModel->getLikes($post['image_id']);
 			$posts[$key]['comments'] = $comments;
 			$posts[$key]['likes'] = $likes;
 		}
-
+		
 		$data = [
-			'page_number' => $page_number,
+			'number_of_pages' => $this->postModel->getNumberOfPages(),
+			'current_page' => $page_number,
 			'title'		=> 'index page',
 			'posts'		=> $posts,
-			'user_name'	=> $_SESSION['user_name'],
+			'user_name'	=> $user_name,
 		];
 
 		$this->view('pages/index', $data);
@@ -36,25 +48,35 @@ class Pages extends Controller {
 			$this->postModel->likePost($_POST['image_id'], $_POST['current_user']);
 			return (true);
 		}
-		else
-			redirect('users/login');
+		else {
+			$data = [
+				'email_error' => '',
+				'name_error' => ''
+			];
+			$this->view('users/login', $data);
+		}
 	}
 
 	public function comment(){
 		if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-			if (isLoggedIn()){			// added a comment
+			if (isLoggedIn()){		// added a comment
 				$image_id = key($_POST);
-				if ($this->postModel->postExists($image_id)){
+				if (!empty($_POST[$image_id]) && $this->postModel->postExists($image_id)){
 					$newcomment = filter_var($_POST[$image_id], FILTER_SANITIZE_STRING);
 					$this->postModel->storeComment($image_id, $_SESSION['user_id'], $newcomment);
-					redirect('pages/index');
 				}
+				redirect('pages/index');
 			} else {
-				redirect('users/login');
+				$data = [
+					'email_error' => '',
+					'name_error' => '',
+					'password_error' => ''
+				];
+				$this->view('users/login', $data);
 			}
 		}
 		else
-			redirect('users/login');
+			redirect('pages/index');
 	}
 
     public function about(){
@@ -93,10 +115,14 @@ class Pages extends Controller {
 				if ($this->postModel->deletePost($image_id_to_delete))
 					redirect('pages/index');
 				else
-					echo 'Something went wrong<br>';
+					echo 'Error : image was not deleted<br>';
 			}
 		} else {
-			redirect('users/login');
+			$data = [
+				'email_error' => '',
+				'name_error' => ''
+			];
+			$this->view('users/login', $data);
 		}
 	}
 

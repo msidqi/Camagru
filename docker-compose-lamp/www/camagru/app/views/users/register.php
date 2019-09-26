@@ -4,11 +4,11 @@
 	<h3>Create new account</h3>
 	<form method='post' action=<?php echo URLROOT . '/users/register'; ?>>
 			<div class='form-group text-left'><h6 class='ml-1'>User name <sup>*</sup></h6>
-			<input class="form-control <?php echo !empty($data['name_error']) ? 'is-invalid' : ''; ?>" type="text" name="user_name" value="<?php echo $data['user_name'];?>"><br>
+			<input class="form-control <?php echo !empty($data['name_error']) ? 'is-invalid' : ''; ?>" type="text" name="user_name" value="<?php if (!empty($data['user_name'])) echo $data['user_name'];?>"><br>
 			<span class='invalid-feedback'><?php echo $data['name_error']; ?></span>
 			</div>
 			<div class='form-group text-left'><h6 class='ml-1'>Email <sup>*</sup></h6>
-			<input class="form-control <?php echo !empty($data['email_error']) ? 'is-invalid' : ''; ?>" type="text" name="email" placeholder='example@gmail.com' value="<?php echo $data['email'];?>"><br>
+			<input class="form-control <?php echo !empty($data['email_error']) ? 'is-invalid' : ''; ?>" type="text" name="email" placeholder='example@gmail.com' value="<?php if (!empty($data['email'])) echo $data['email']; ?>"><br>
 			<span class='invalid-feedback'><?php echo $data['email_error']; ?></span>
 			</div>
 			<div class='form-group text-left'><h6 class='ml-1'>Password <sup>*</sup></h6>

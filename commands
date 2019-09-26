@@ -1,5 +1,10 @@
 STMP for mail :
-apt-get update apt install -y mailutils
+apt-get update && apt install -y postfix mailutils
+
+vim /etc/postfix/main.cf
+change to >> inet_interfaces = loopback-only
+service postfix restart || echo "service postfix restart" >> ~/.bashrc
+#-------------------------------------------------------------------------------
 
 docker exec -it png-mysql bash
 mysql -u username -p < example.sql
@@ -16,7 +21,7 @@ SELECT * FROM users;
 #-------------------------------------------------------------------------------
 
 CREATE USER 'msidqi'@'localhost' IDENTIFIED BY 'msidqi';
-GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';
+GRANT ALL PRIVILEGES ON * . * TO 'msidqi'@'localhost';
 #-------------------------------------------------------------------------------
 CREATE DATABASE IF NOT EXISTS camagru_db;
 
@@ -29,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 `password` VARCHAR(255) NOT NULL,
 `verified` BIT NOT NULL DEFAULT B'0',
 `user_image` VARCHAR(255) NOT NULL DEFAULT '/photos/default/default_profile.jpeg',
+`tokken` VARCHAR(255) NOT NULL DEFAULT 'N',
 `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -41,37 +47,12 @@ CREATE TABLE IF NOT EXISTS `posts` (
 `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO `users` (user_name, email, password, verified)
-VALUES
-('mouad', 'mouad@gmail.com', '123456', B'1'),
-('Loool', 'loool@gmail.com', '123456', B'1');
-
-
-INSERT INTO `posts` (`user_id`, `image`, image_type, image_size)
-VALUES
-(12, '/photos/posts/1.jpeg', 'JPEG', 3),
-(12, '/photos/posts/2.jpeg', 'JPEG', 1),
-(12, '/photos/posts/3.jpeg', 'JPEG', 1),
-(12, '/photos/posts/4.jpeg', 'JPEG', 1),
-(12, '/photos/posts/5.jpeg', 'JPEG', 1),
-(12, '/photos/posts/6.jpeg', 'JPEG', 1),
-(12, '/photos/posts/7.jpeg', 'JPEG', 1),
-(12, '/photos/posts/8.jpeg', 'JPEG', 1),
-(12, '/photos/posts/9.jpeg', 'JPEG', 1),
-(12, '/photos/posts/10.jpeg', 'JPEG', 1),
-(12, '/photos/posts/11.jpeg', 'JPEG', 1),
-(12, '/photos/posts/12.jpeg', 'JPEG', 1);
-
-
 CREATE TABLE IF NOT EXISTS `comments` (
 	`image_id` INT NOT NULL ,
 	`user_id` INT NOT NULL,
 	`comment` VARCHAR(1024) NOT NULL,
 	`created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-
-INSERT INTO `comments` (`image_id`, `user_id`, `comment`)
-VALUES(1, 12, 'hello world');
 
 CREATE TABLE IF NOT EXISTS `likes` (
 	`image_id` INT NOT NULL,

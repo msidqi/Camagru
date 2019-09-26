@@ -1,6 +1,6 @@
 <?php
 // load config
-    require_once 'config/config.php';
+    require_once 'config/database.php';
 
 // util_functions
 	require_once 'util_functions/redirect.php';

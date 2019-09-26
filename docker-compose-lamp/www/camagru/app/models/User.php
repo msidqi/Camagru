@@ -7,6 +7,33 @@ class User {
 		$this->db = new Database;
 	}
 
+	public function resetPasswdTokken($email){
+		$tokken = createTokken();
+		$hash = password_hash($tokken, PASSWORD_DEFAULT);
+		$this->db->query("UPDATE users SET tokken = :hashh WHERE email = :email");
+		$this->db->bind(':email', $email);
+		$this->db->bind(':hashh', $hash);
+		if ($this->db->execute()){
+			return ($tokken);
+		}
+		return ('(ERROR : Account not registered.)');
+	}
+
+	public function deleteTokken($email){
+		$this->db->query('UPDATE `users` SET `tokken` = \'N\' WHERE email = :email');
+		$this->db->bind(':email', $email);
+		$this->db->execute();
+	}
+
+	public function validatePasswdTokken($email_tokken){
+		$this->db->query('SELECT * FROM users WHERE email = :email');
+		$this->db->bind(':email', $email_tokken['email']);
+		
+		if (($user = $this->db->getSingleResult()) && password_verify($email_tokken['tokken'], $user->tokken))
+			return ($user);
+		return (false);
+	}
+
 	public function emailExists($user_email){
 		$this->db->query('SELECT * FROM `users` WHERE `email` = :email');
 		$this->db->bind(':email', $user_email, PDO::PARAM_STR);
@@ -90,6 +117,14 @@ class User {
 		return (false);
 	}
 
+	public function isVerified($email){
+		$this->db->query("SELECT * FROM users WHERE email = :email AND `verified` = B'1'");
+		$this->db->bind(':email', $email);
+		if ($this->db->getSingleResult())
+			return (true);
+		return (false);
+	}
+
 	public function loginUser($data){
 		if (!empty($data['user_name'])){
 			$this->db->query("SELECT * FROM `users` WHERE `user_name` = :user_name");
@@ -100,8 +135,7 @@ class User {
 		} else if (!empty($data['email'])){
 			$this->db->query("SELECT * FROM `users` WHERE `email` = :email");
 			$this->db->bind(':email', $data['email'], PDO::PARAM_STR);
-			$result = $this->db->getSingleResult();
-			if (password_verify($data['password'], $result->password))
+			if (($result = $this->db->getSingleResult()) && password_verify($data['password'], $result->password))
 				return ($result);
 		}
 		return (false);
@@ -111,7 +145,7 @@ class User {
 		$user = $this->getUserByEmail($data['email']);
 		if ($user){
 			//update email
-			$this->db->query("UPDATE `users` SET `email` = :new_email WHERE `email` = $user->email");
+			$this->db->query("UPDATE `users` SET `email` = :new_email WHERE `email` = '$user->email'");
 			$this->db->bind(':new_email', $data['new_email'], PDO::PARAM_STR);
 			if ($this->db->execute())
 				return (true);
@@ -123,7 +157,7 @@ class User {
 		$user = $this->getUserByUserName($data['user_name']);
 		if ($user){
 			//update user name
-			$this->db->query("UPDATE `users` SET `user_name` = :new_user_name WHERE `user_name` = $user->user_name");
+			$this->db->query("UPDATE `users` SET `user_name` = :new_user_name WHERE `user_name` = '$user->user_name'");
 			$this->db->bind(':new_user_name', $data['new_user_name'], PDO::PARAM_STR);
 			if ($this->db->execute())
 				return (true);
@@ -132,10 +166,10 @@ class User {
 	}
 
 	public function changePassword($data){
-		$user = $this->getUserByUserEmail($data['email']);
+		$user = $this->getUserByEmail($data['email']);
 		if ($user){
 			//update password
-			$this->db->query("UPDATE `users` SET `password` = :new_password WHERE `email` = $user->email");
+			$this->db->query("UPDATE `users` SET `password` = :new_password WHERE `email` = '$user->email'");
 			$this->db->bind(':new_password', $data['new_password'], PDO::PARAM_STR);
 			if ($this->db->execute())
 				return (true);
