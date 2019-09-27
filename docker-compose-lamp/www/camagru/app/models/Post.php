@@ -190,4 +190,17 @@ class Post {
 		}
 		return ($allposts);
 	}
+
+	public function sendNotification($data){
+		$this->db->query('SELECT `user_id` FROM posts WHERE `image_id` = :image_id');
+		$this->db->bind(':image_id', $data['image_id']);
+		if ($user_id = $this->db->getSingleResult()){
+			$this->db->query("SELECT * FROM users WHERE `id` = " . $user_id->user_id);
+			if (($user = $this->db->getSingleResult()) && $user->notification == '1'){
+				mail($user->email, 'Camagru Notification', $data['user_name'] . ' has commented on one of your posts.');
+				return (true);
+			}
+		}
+		return (false);
+	}
 }

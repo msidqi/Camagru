@@ -34,7 +34,14 @@
 				<button class="btn btn-dark" type="submit">Change Email</button>
 				<span class='invalid-feedback'><?php if (!empty($data['email_error'])) echo $data['email_error']; ?></span>
 			</div>
-		</form>		
+		</form>	
+		<hr>
+		<form  class="row" method="POST" action=<?php echo URLROOT . '/users/profile'; ?>>
+			<div class="col-4">
+			<button class="btn <?php if (!empty($data['notification'])) { if ($data['notification'] == 'enabled') echo 'btn-dark'; else echo 'btn-success'; }?>" value="notification" name="notification" type="submit">
+			<?php if (!empty($data['notification'])) { if ($data['notification'] == 'enabled') echo 'Disable Notification'; else echo 'Enable Notification'; }?></button>
+			</div>
+		</form>	
 </div>
 
 

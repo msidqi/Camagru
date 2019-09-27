@@ -1,7 +1,7 @@
 <?php require_once APPROOT . '/views/include/header.php'; ?>
 
 	<?php if (!empty($data['user_name'])) :?>
-		<a href="<?php echo URLROOT . '/pages/add';?>"><button id="addphoto" class="button btn-block">add photo</button></a><br>
+		<a href="<?php echo URLROOT . '/pages/add';?>"><button id="addphoto" class="button peach-gradient btn-block">add photo</button></a><br>
 	<?php endif; ?>
 
 		<?php foreach($data['posts'] as $key => $value) :?>
@@ -35,13 +35,13 @@
 		<div class="commentsbox">
 			<?php foreach($data['posts'][$key]['comments'] as $comment) : ?>
 				<div class="comment">
-					<h5><strong><?php echo $comment['name'] . ' : ';?></strong><?php echo $comment['comment']; ?></h5>
+					<h6><strong><?php echo $comment['name'] . ' : ';?></strong><?php echo $comment['comment']; ?></h5>
 				</div>
 			<?php endforeach;?>
 			<div class="newcomment">
 				<form method="post" action=<?php echo URLROOT . '/pages/comment'; ?>>
-					<textarea name="<?php echo $data['posts'][$key]['image_id']; ?>" col="60" row="5" placeholder="Comment..."></textarea>
-					<input type="submit" value="comment" class="btn skyblue btn-block">
+					<textarea class="faded" name="<?php echo $data['posts'][$key]['image_id']; ?>" col="60" row="5" placeholder="your comment..."></textarea>
+					<input type="submit" value="comment" class="btn font newcombox btn-block">
 				</form>
 			</div>
 		</div>
@@ -50,9 +50,13 @@
 		<div class="paging-container row">
 		<?php for ($i = 0; $i < $data['number_of_pages']; $i++) :?>
 			<?php if ($data['current_page'] == $i + 1) : ?>
-				<form method="GET"><button class="paging-number-current btn" type="submit" name="page" value="<?php echo $i + 1?>"><?php echo $i + 1 ?></button></form>
+				<form method="GET">
+					<button class="paging-number-current btn" type="submit" name="page" value="<?php echo $i + 1?>"><?php echo $i + 1 ?></button>
+				</form>
 			<?php else : ?>
-				<form method="GET"><button class="paging-number btn" type="submit" method="GET" name="page" value="<?php echo $i + 1?>"><?php echo $i + 1 ?></button></form>
+				<form method="GET">
+					<button class="paging-number btn" type="submit" method="GET" name="page" value="<?php echo $i + 1?>"><?php echo $i + 1 ?></button>
+				</form>
 			<?php endif; ?>
 		<?php endfor; ?>
 		</div>

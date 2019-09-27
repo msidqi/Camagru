@@ -7,7 +7,6 @@ class Pages extends Controller {
 	}
 
 	public function index(){
-		var_dump(dirname(dirname(__FILE__)));
 		if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] > 0) {
 			$offset = 5 * ($_GET['page'] - 1);
 			$page_number = $_GET['page'];
@@ -63,16 +62,12 @@ class Pages extends Controller {
 				$image_id = key($_POST);
 				if (!empty($_POST[$image_id]) && $this->postModel->postExists($image_id)){
 					$newcomment = filter_var($_POST[$image_id], FILTER_SANITIZE_STRING);
-					$this->postModel->storeComment($image_id, $_SESSION['user_id'], $newcomment);
+					if ($this->postModel->storeComment($image_id, $_SESSION['user_id'], $newcomment))
+						$this->postModel->sendNotification(['image_id' => $image_id, 'user_name' => $_SESSION['user_name']]);
 				}
 				redirect('pages/index');
 			} else {
-				$data = [
-					'email_error' => '',
-					'name_error' => '',
-					'password_error' => ''
-				];
-				$this->view('users/login', $data);
+				$this->view('users/login');
 			}
 		}
 		else
@@ -143,11 +138,12 @@ class Pages extends Controller {
 				$extensions = $key . ' ' . $extensions;
 			};
 			if (key($_POST) == 'image' && substr($_POST['image'], 0, 22) === 'data:image/png;base64,'
-				&& isset($_POST['name']) && $_POST['name'] > 0 && $_POST['name'] < 6){
+				&& isset($_POST['name']) && $_POST['name'] > 0 && $_POST['name'] < 6){					// Upload with js
 				$sticker = getStickerName($_POST['name']);
 				$decodedimg = base64_decode(substr($_POST['image'], 22, strlen($_POST['image'])));
 				$ex = substr($decodedimg , 1, 3);
-				$size = filesize(APPROOT . '/photos/posts/' . $unique_name . '.png');
+				if (!($size = @filesize(APPROOT . '/photos/posts/' . $unique_name . '.png')))
+					$size = 0;
 				if ($ex == 'PNG' && $size < $maxsize){
 					file_put_contents(APPROOT . '/photos/posts/' . $unique_name . '.png', $decodedimg);
 					$postpic = [
@@ -163,7 +159,7 @@ class Pages extends Controller {
 				}
 			} else if (isset($_FILES['uploadedimage']) && $_FILES['uploadedimage']['error'] === 0
 					&& isset($_FILES['uploadedimage']['name']) && isset($_FILES['uploadedimage']['type'])
-						&& isset($_FILES['uploadedimage']['size']) && key($_POST) > 0 && key($_POST) < 6){
+						&& isset($_FILES['uploadedimage']['size']) && key($_POST) > 0 && key($_POST) < 6){	// Upload with PHP
 				$sticker = getStickerName(key($_POST));
 				$imgname = $_FILES['uploadedimage']['name'];
 				$imgtype = $_FILES['uploadedimage']['type'];
@@ -184,7 +180,7 @@ class Pages extends Controller {
 						// save file in photos/posts
 						// Insert into posts table
 						while (file_exists($uploads_dir . $unique_name )){
-
+							$unique_name = uniqid(substr($_SESSION['user_name'], 0, 3));
 						}
 						if (touch($uploads_dir . $unique_name . '.' . $imgext) &&
 							move_uploaded_file($_FILES["uploadedimage"]["tmp_name"], $uploads_dir . $unique_name . '.' . $imgext)){
@@ -205,10 +201,7 @@ class Pages extends Controller {
 				}
 				
 			} else {
-				$data = [
-					'error' => 'Somehing went wrong'
-				];
-				$this->view('pages/add', $data); // error during processing
+				$this->view('pages/add', ['error' => 'Somehing went wrong']); // error during processing
 			}
 			redirect('pages/add');
 		} else {

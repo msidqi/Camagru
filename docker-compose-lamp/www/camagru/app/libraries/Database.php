@@ -1,7 +1,7 @@
 <?php
 
 
-// model/pdo class : create, update, delete data from database + suply the data to controller.
+// model/pdo class : create, update, delete data from database + supply the data to controller.
 class Database {
     private $host = DB_HOST;
     private $user = DB_USER;
@@ -38,7 +38,7 @@ class Database {
 	}
 
 	public function bind($param, $value, $type = NULL){
-		if (is_null($type)){//if type param is not passed
+		if (is_null($type)){
 			switch(1){			//identify the type of the $value
 				case is_int($value) :
 					$type = PDO::PARAM_INT;
@@ -52,7 +52,7 @@ class Database {
 				default :
 					$type = PDO::PARAM_STR;
 			}
-		}// bind the values
+		}
 		$this->stmt->bindValue($param, $value, $type);
 	}
 

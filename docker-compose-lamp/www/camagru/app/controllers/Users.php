@@ -34,7 +34,7 @@ class Users extends Controller {
 						$data['name_error'] = 'User name must be 15 characters or shorter.';
 						break ;
 					case !preg_match('/^[A-Z]([a-z0-9])*([_-]){0,1}([a-z0-9])+$/', $user_name) :
-						$data['name_error'] = 'User name must start with capital letter and contain characters from A-Z a-z, 0-9, one non-ending hyphen at max.';
+						$data['name_error'] = 'User name must start with capital letter and contain characters from A-Z a-z, 0-9, one hyphen at max.';
 						break ;
 					case $this->userModel->userNameExists($user_name) :
 						$data['name_error'] = 'User name is taken';
@@ -244,6 +244,7 @@ class Users extends Controller {
 				'name_error'		=> '',
 				'email_error'		=> '',
 				'password_error'	=> '',
+				'notification'		=> '',
 			];
 			if (!empty($_POST['newusername'])){
 				$newuser_name = $_POST['newusername'];
@@ -308,18 +309,24 @@ class Users extends Controller {
 					default :
 						$data['password_error'] = '';
 				}
+			} elseif (!empty($_POST['notification'])){
+				$data['notification'] = $this->userModel->changeNotification($_SESSION['user_name']);
 			}
+			// var_dump($data);
 			$this->view('users/profile', $data);
 		} elseif (isLoggedIn()){
 			if (!empty($_SESSION['user_name']))
 				$user_name = $_SESSION['user_name'];
 			else
 				$user_name = '';
+			$notification = $this->userModel->notificationStatus($_SESSION['user_name']);
 			$data = [
 				'description'	=> 'best profile page ever',
 				'user_name'		=> $user_name,
-				'profile_photo'	=> $this->userModel->getProfilePhoto($user_name)
+				'profile_photo'	=> $this->userModel->getProfilePhoto($user_name),
+				'notification'	=> $notification
 			];
+			// var_dump($data);
 
 			$this->view('users/profile', $data);
 		} else {

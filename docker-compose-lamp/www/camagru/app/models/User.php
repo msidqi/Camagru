@@ -141,6 +141,33 @@ class User {
 		return (false);
 	}
 
+	public function changeNotification($user_name){
+		$state = $this->notificationStatus($user_name);
+		if ($state == 'enabled'){
+			$this->db->query("UPDATE users SET `notification` = B'0' WHERE `user_name` = :user_name");
+			$this->db->bind(':user_name', $user_name);
+			$this->db->execute();
+				return('disabled');
+		} else {
+			$this->db->query("UPDATE users SET `notification` = B'1' WHERE `user_name` = :user_name");
+			$this->db->bind(':user_name', $user_name);
+			$this->db->execute();
+			return('enabled');
+		}
+		return ('');
+	}
+
+	public function notificationStatus($user_name){
+		$this->db->query("SELECT * FROM users WHERE `user_name` = :user_name");
+		$this->db->bind(':user_name', $user_name);
+		if (($user = $this->db->getSingleResult())){
+			if ($user->notification == '1')
+				return ('enabled');
+			return ('disabled');
+		}
+		return ('');
+	}
+
 	public function changeEmail($data){
 		$user = $this->getUserByEmail($data['email']);
 		if ($user){
