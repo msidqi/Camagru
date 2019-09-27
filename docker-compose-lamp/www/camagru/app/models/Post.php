@@ -154,14 +154,20 @@ class Post {
 	}
 
 	public function storeComment($image_id, $user_id, $comment){
+		try{
 		$this->db->query("INSERT INTO `comments` (`image_id`, `user_id`, `comment`) VALUES($image_id, $user_id, :comment)");
 		$this->db->bind(':comment', $comment, PDO::PARAM_STR);
 		if ($this->db->execute())
 			return (true);
-		return (false);
+		}
+		catch (PDOException $e)
+		{
+			return (false);
+		}
 	}
 
 	public function storePost($post){
+		try{
 		$this->db->query("INSERT INTO posts 
 		SET	user_id = :user_id, image = :image,
 		image_type = :image_type, image_size = :image_size");
@@ -172,7 +178,11 @@ class Post {
 		$this->db->bind(':image_size', $post['image_size'], PDO::PARAM_INT);
 		if ($this->db->execute())
 			return (true);
-		return (false);
+		}
+		catch (PDOException $e)
+		{
+			return (false);
+		}
 	}
 
 	public function getAllUserPosts($user_name){

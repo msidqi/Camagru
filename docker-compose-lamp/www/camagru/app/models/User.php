@@ -99,7 +99,7 @@ class User {
 	}
 
 	public function registerUser($data){
-
+		try {
 		$this->db->query("INSERT INTO `users`(user_name, email, password) VALUES(:user_name, :email, :password)");
 		$this->db->bind(':user_name', $data['user_name'], PDO::PARAM_STR);
 		$this->db->bind(':email', $data['email'], PDO::PARAM_STR);
@@ -107,7 +107,11 @@ class User {
 
 		if ($this->db->execute())
 			return (true);
-		return (false);
+		}
+		catch (PDOException $e)
+		{
+			return (false);
+		}
 	}
 
 	public function verifyUser($user_id){

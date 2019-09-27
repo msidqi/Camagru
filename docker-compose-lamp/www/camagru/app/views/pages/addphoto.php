@@ -4,7 +4,7 @@
 <div class="text-center" id="add-box">
 	<div class="row">
 
-		<div class="col">
+		<div class="col-8">
 			<div id="camera-container" class="row margin-auto">
 				<video id="video"></video>
 				<button id="capture" >Take Picture</button>
@@ -33,10 +33,13 @@
 
 		<canvas id="canvas"></canvas>
 
-		<div class="col">
+		<div class="col-4">
 <?php if (!empty($data['posts'])) : foreach($data['posts'] as $post) : ?>
 			<div class="hundred row margin-auto">
 				<img class="photo margin-auto" src="<?php echo $post['image']; ?>">
+				<form method='post' action=<?php echo URLROOT . '/pages/delete'; ?>>	
+						<input type="submit" value="Delete" id="delete" name="<?php echo $post['image_id']; ?>" class="btn btn-danger">
+				</form>
 			</div>
 <?php endforeach ; endif ; ?>
 		</div>

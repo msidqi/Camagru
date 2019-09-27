@@ -43,7 +43,7 @@ class Pages extends Controller {
 
 	public function like(){
 		if ($_SERVER['REQUEST_METHOD'] == 'POST'
-				&& isset($_POST['image_id']) && isset($_POST['current_user'])){
+				&& isLoggedIn() && isset($_POST['image_id']) && isset($_POST['current_user'])){
 			$this->postModel->likePost($_POST['image_id'], $_POST['current_user']);
 			return (true);
 		}
@@ -55,6 +55,7 @@ class Pages extends Controller {
 			$this->view('users/login', $data);
 		}
 	}
+
 
 	public function comment(){
 		if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -97,8 +98,9 @@ class Pages extends Controller {
 					2 => '../app/photos/superpos/rajang.png',
 					3 => '../app/photos/superpos/ayano.png',
 					4 => '../app/photos/superpos/scumbag.png',
-				]
+				],
 			];
+			// var_dump($posts);
 			$this->view('pages/addphoto', $data);
 		}
 	}

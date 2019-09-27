@@ -97,8 +97,9 @@ class Users extends Controller {
 				&& empty($data['password_error']) && empty($data['confirm_password_error'])){
 				$data['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 				if ($this->userModel->registerUser($data)){
+					$link = '<a href="' . URLROOT . '/users/login?xjk=' . base64_url_encode($this->userModel->getUserId($data['user_name'])) . '&hr=' . md5($data['user_name']) .'">Click here</a>';
 					// $subject = URLROOT . '/users/login?xjk=' . base64_encode($user_id) . '&hr=' . md5($user_name);
-					mail($data['email'], 'Verify email', 'Hello ' . $data['user_name'] . PHP_EOL . 'Please verify your email by visiting the following link :' . PHP_EOL . URLROOT . '/users/login?xjk=' . base64_url_encode($this->userModel->getUserId($data['user_name'])) . '&hr=' . md5($data['user_name']));
+					mail($data['email'], 'Verify email', 'Hello ' . $data['user_name'] . PHP_EOL . 'Please verify your email by visiting the following link :' . PHP_EOL . $link);
 					$this->view('users/login', $data); // redirect through url to login page
 				} else {
 					$data['name_error'] = 'Something went wrong!!!';

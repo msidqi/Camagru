@@ -51,10 +51,7 @@ function startup() {
 	// check if getUserMedia is undefined
 	if (navigator.mediaDevices.getUserMedia) {
 		// requests the type of media wanted audio/video or both.
-		navigator.mediaDevices.getUserMedia({video: {
-											width: { min: 480, ideal: width},
-											height: { min: 320, ideal: height}
-												}})
+		navigator.mediaDevices.getUserMedia({video: true})
 		// getUserMedia returns a promise. on success we recieve a stream.
 		.then(function (stream) {
 			// connect <video> tag with the recieved stream then play by calling HTMLMediaElement.play().

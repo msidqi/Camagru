@@ -19,6 +19,7 @@ INSERT INTO other_users(login, password, verified) VALUES('user1', '1111', true)
 SELECT * FROM users;
 
 #-------------------------------------------------------------------------------
+docker run -p "80:80" -d --name server -v ${PWD}:/app mattrayner/lamp:latest-1804
 
 CREATE USER 'msidqi'@'localhost' IDENTIFIED BY 'msidqi';
 GRANT ALL PRIVILEGES ON * . * TO 'msidqi'@'localhost';

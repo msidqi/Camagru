@@ -48,7 +48,7 @@ body * h6 {
 }
 .navbar {
 	width : 100%;
-	height : 50px;
+	min-height : 50px;
 	color : white;
 	background : #111224;
 }
@@ -257,7 +257,7 @@ ffffff
 }
 
 .sticker {
-	width : 100%;
+	width : 50px;
 }
 
 .hundred {
@@ -336,3 +336,12 @@ ffffff
 .page-body {
     flex-grow: 1;
 }
+
+video{
+	vertical-align: top;
+}
+
+@media only screen and (max-width: 600px) {
+	
+  }
+
