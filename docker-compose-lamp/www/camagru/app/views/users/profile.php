@@ -4,12 +4,13 @@
 <div>
 	<img class="profile-photo" alt="profile-picture" src="<?php if (!empty($data['profile_photo'])) echo $data['profile_photo'];?>">
 </div>
+
 <h1 ><?php if (!empty($data['user_name'])) echo $data['user_name']; ?>'s profile</h1>	
 	<?php if (!empty($data['description'])) echo $data['description'] ?>
 
 	<hr><form  class="row" method="POST" action=<?php echo URLROOT . '/users/profile'; ?>>
 			<div class="col-6">
-				<input class="form-control <?php echo !empty($data['name_error']) ? 'is-invalid' : ''; ?>" type="text" placeholder="New Username" name="newusername">
+				<input class="form-control <?php echo !empty($data['name_error']) ? 'is-invalid' : (!empty($data['name_success']) ? 'is-valid' : ''); ?>" type="text" placeholder="New Username" name="newusername">
 			</div>
 			<div class="col-4">
 				<button class="btn btn-dark" type="submit" >Change Username</button>
@@ -18,7 +19,7 @@
 		</form>
 		<hr><form  class="row" method="POST" action=<?php echo URLROOT . '/users/profile'; ?>>
 			<div class="col-6">
-				<input class="form-control <?php echo !empty($data['password_error']) ? 'is-invalid' : ''; ?>" type="password" placeholder="New Password" name="newpassword">
+				<input class="form-control <?php echo !empty($data['password_error']) ? 'is-invalid' : (!empty($data['password_success']) ? 'is-valid' : ''); ?>" type="password" placeholder="New Password" name="newpassword">
 			</div>
 			<div class="col-4">
 				<button class="btn btn-dark" type="submit">Change Password</button>
@@ -28,7 +29,7 @@
 		
 		<hr><form  class="row" method="POST" action=<?php echo URLROOT . '/users/profile'; ?>>
 			<div class="col-6">
-			<input class="form-control <?php echo !empty($data['email_error']) ? 'is-invalid' : ''; ?>" type="text" placeholder="New Email" name="newemail">
+			<input class="form-control <?php echo !empty($data['email_error']) ? 'is-invalid' : (!empty($data['email_success']) ? 'is-valid' : ''); ?>" type="text" placeholder="New Email" name="newemail">
 			</div>
 			<div class="col-4">
 				<button class="btn btn-dark" type="submit">Change Email</button>

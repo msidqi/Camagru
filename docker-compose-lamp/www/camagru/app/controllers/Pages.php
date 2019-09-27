@@ -63,7 +63,7 @@ class Pages extends Controller {
 				if (!empty($_POST[$image_id]) && $this->postModel->postExists($image_id)){
 					$newcomment = filter_var($_POST[$image_id], FILTER_SANITIZE_STRING);
 					if ($this->postModel->storeComment($image_id, $_SESSION['user_id'], $newcomment))
-						$this->postModel->sendNotification(['image_id' => $image_id, 'user_name' => $_SESSION['user_name']]);
+					$this->postModel->sendNotification(['image_id' => $image_id, 'user_name' => $_SESSION['user_name']]);
 				}
 				redirect('pages/index');
 			} else {

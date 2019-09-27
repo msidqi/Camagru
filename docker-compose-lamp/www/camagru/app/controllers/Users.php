@@ -244,7 +244,10 @@ class Users extends Controller {
 				'name_error'		=> '',
 				'email_error'		=> '',
 				'password_error'	=> '',
-				'notification'		=> '',
+				'name_success'		=> '',
+				'email_success'		=> '',
+				'password_success'	=> '',
+				'notification'		=> $this->userModel->notificationStatus($_SESSION['user_name']),
 			];
 			if (!empty($_POST['newusername'])){
 				$newuser_name = $_POST['newusername'];
@@ -269,6 +272,7 @@ class Users extends Controller {
 						$data['user_name'] = $newuser_name;
 						$_SESSION['user_name'] = $newuser_name;
 						$data['name_error'] = '';
+						$data['name_success'] = 's';
 				}
 			} elseif (!empty($_POST['newemail'])){
 				$newemail = $_POST['newemail'];
@@ -289,6 +293,7 @@ class Users extends Controller {
 					default :
 						$data['email_error'] = '';
 						$_SESSION['user_email'] = $newemail;
+						$data['user_success'] = 's';
 				}
 			} elseif (!empty($_POST['newpassword'])){
 				$newpassword = $_POST['newpassword'];
@@ -308,6 +313,7 @@ class Users extends Controller {
 						break ;
 					default :
 						$data['password_error'] = '';
+						$data['password_success'] = 's';
 				}
 			} elseif (!empty($_POST['notification'])){
 				$data['notification'] = $this->userModel->changeNotification($_SESSION['user_name']);

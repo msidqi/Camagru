@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 `email`	VARCHAR(255) NOT NULL,
 `password` VARCHAR(255) NOT NULL,
 `verified` BIT NOT NULL DEFAULT B'0',
-`notification` BIT NOT NULL DEFAULT B'0',
+`notification` BIT NOT NULL DEFAULT B'1',
 `user_image` VARCHAR(255) NOT NULL DEFAULT '/photos/default/default_profile.jpeg',
 `tokken` VARCHAR(255) NOT NULL DEFAULT 'N',
 `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP

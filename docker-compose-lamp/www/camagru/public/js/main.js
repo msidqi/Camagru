@@ -47,7 +47,7 @@ function startup() {
 	document.getElementById("capture").disabled = true;
 	document.getElementById("pic").disabled = true;
 	document.getElementById("sticker").disabled = true;
-		
+
 	// check if getUserMedia is undefined
 	if (navigator.mediaDevices.getUserMedia) {
 		// requests the type of media wanted audio/video or both.
