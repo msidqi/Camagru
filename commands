@@ -6,7 +6,7 @@ change to >> inet_interfaces = loopback-only
 service postfix restart || echo "service postfix restart" >> ~/.bashrc
 #-------------------------------------------------------------------------------
 
-docker exec -it png-mysql bash
+docker exec -it mysql bash
 mysql -u username -p < example.sql
 
 mysql -u root -p

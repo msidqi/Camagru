@@ -70,8 +70,7 @@ class Pages extends Controller {
 			} else {
 				$this->view('users/login');
 			}
-		}
-		else
+		} else
 			redirect('pages/index');
 	}
 
@@ -84,9 +83,7 @@ class Pages extends Controller {
 	}
 
 	public function add(){
-		if (!isLoggedIn()){
-			redirect('users/login');
-		} else {
+		if (isLoggedIn()){
 			$posts = $this->postModel->getAllUserPosts($_SESSION['user_name']);
 
 			$data = [
@@ -100,8 +97,9 @@ class Pages extends Controller {
 					4 => '../app/photos/superpos/scumbag.png',
 				],
 			];
-			// var_dump($posts);
 			$this->view('pages/addphoto', $data);
+		} else {
+			redirect('users/login');
 		}
 	}
 
@@ -139,7 +137,7 @@ class Pages extends Controller {
 			foreach($validextension as $key => $value){
 				$extensions = $key . ' ' . $extensions;
 			};
-			if (key($_POST) == 'image' && substr($_POST['image'], 0, 22) === 'data:image/png;base64,'
+			if (key($_POST) == 'image' && isset($_POST['image']) && substr($_POST['image'], 0, 22) === 'data:image/png;base64,'
 				&& isset($_POST['name']) && $_POST['name'] > 0 && $_POST['name'] < 6){					// Upload with js
 				$sticker = getStickerName($_POST['name']);
 				$decodedimg = base64_decode(substr($_POST['image'], 22, strlen($_POST['image'])));
@@ -184,8 +182,8 @@ class Pages extends Controller {
 						while (file_exists($uploads_dir . $unique_name )){
 							$unique_name = uniqid(substr($_SESSION['user_name'], 0, 3));
 						}
-						if (touch($uploads_dir . $unique_name . '.' . $imgext) &&
-							move_uploaded_file($_FILES["uploadedimage"]["tmp_name"], $uploads_dir . $unique_name . '.' . $imgext)){
+						if (touch($uploads_dir . $unique_name . '.' . $imgext) && isset($_FILES["uploadedimage"]["tmp_name"])
+							&& move_uploaded_file($_FILES["uploadedimage"]["tmp_name"], $uploads_dir . $unique_name . '.' . $imgext)){
 							$post = [
 								'user_id'		=> $_SESSION['user_id'],
 								'image'			=> '/photos/posts/' . $unique_name . '.' . $imgext,
