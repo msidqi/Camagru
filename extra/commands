@@ -1,0 +1,65 @@
+STMP for mail :
+docker run -p "80:80" -d --name server -v ${PWD}:/app mattrayner/lamp:latest-1804
+apt-get update && apt install -y postfix mailutils
+sed -i 's/inet_interfaces = inet/inet_interfaces = loopback-only/' /etc/postfix/main.cf
+
+vim /etc/postfix/main.cf
+change to >> inet_interfaces = loopback-only
+service postfix restart || echo "service postfix restart" >> ~/.bashrc
+#-------------------------------------------------------------------------------
+
+docker exec -it mysql bash
+mysql -u username -p < example.sql
+
+mysql -u root -p
+CREATE DATABASE camagru_db;
+USE camagru_db;
+CREATE TABLE users (id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, login VARCHAR(15) NOT NULL, password TEXT NOT NULL);
+INSERT INTO users(login, password) VALUES('user1', '1111'), ('user2', '2222'), ('user3', '3333'), ('user4', '4444'), ('user5', '5555');
+CREATE TABLE other_users (id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, login VARCHAR(15) NOT NULL, password TEXT NOT NULL, verified BOOLEAN NOT NULL);
+INSERT INTO other_users(login, password, verified) VALUES('user1', '1111', true), ('user2', '2222', true), ('user3', '3333', true), ('user4', '4444', false), ('user5', '5555', false);
+SELECT * FROM users;
+
+#-------------------------------------------------------------------------------
+docker run -p "80:80" -d --name server -v ${PWD}:/app mattrayner/lamp:latest-1804
+
+mysql < app/user.sql
+CREATE USER 'msidqi2'@'localhost' IDENTIFIED BY 'msidqi2';
+GRANT ALL PRIVILEGES ON * . * TO 'msidqi2'@'localhost';
+#-------------------------------------------------------------------------------
+CREATE DATABASE IF NOT EXISTS camagru_db;
+
+USE camagru_db;
+
+CREATE TABLE IF NOT EXISTS `users` (
+`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`user_name` VARCHAR(255) NOT NULL,
+`email`	VARCHAR(255) NOT NULL,
+`password` VARCHAR(255) NOT NULL,
+`verified` BIT NOT NULL DEFAULT B'0',
+`notification` BIT NOT NULL DEFAULT B'1',
+`user_image` VARCHAR(255) NOT NULL DEFAULT '/photos/default/default_profile.jpeg',
+`tokken` VARCHAR(255) NOT NULL DEFAULT 'N',
+`created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS `posts` (
+`image_id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`user_id` INT NOT NULL,
+`image` VARCHAR(255) NOT NULL,
+`image_type` VARCHAR(25) NOT NULL,
+`image_size` INT NOT NULL,
+`created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS `comments` (
+	`image_id` INT NOT NULL ,
+	`user_id` INT NOT NULL,
+	`comment` VARCHAR(1024) NOT NULL,
+	`created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS `likes` (
+	`image_id` INT NOT NULL,
+	`user_id` INT NOT NULL
+);

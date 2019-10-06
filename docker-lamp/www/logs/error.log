@@ -1,0 +1,71 @@
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 09:17:10.683711 2019] [mpm_prefork:notice] [pid 500] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 09:17:10.684248 2019] [core:notice] [pid 500] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 09:18:29.630141 2019] [mpm_prefork:notice] [pid 517] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 09:18:29.630762 2019] [core:notice] [pid 517] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 09:20:04.127848 2019] [mpm_prefork:notice] [pid 502] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 09:20:04.128448 2019] [core:notice] [pid 502] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 09:22:24.297397 2019] [mpm_prefork:notice] [pid 501] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 09:22:24.297911 2019] [core:notice] [pid 501] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 09:23:46.543234 2019] [mpm_prefork:notice] [pid 518] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 09:23:46.543805 2019] [core:notice] [pid 518] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 09:28:34.826853 2019] [mpm_prefork:notice] [pid 500] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 09:28:34.827289 2019] [core:notice] [pid 500] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 09:30:29.764158 2019] [mpm_prefork:notice] [pid 500] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 09:30:29.764650 2019] [core:notice] [pid 500] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 09:43:09.335062 2019] [mpm_prefork:notice] [pid 516] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 09:43:09.335722 2019] [core:notice] [pid 516] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 09:44:46.226013 2019] [mpm_prefork:notice] [pid 501] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 09:44:46.226468 2019] [core:notice] [pid 501] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 09:48:18.843279 2019] [mpm_prefork:notice] [pid 509] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 09:48:18.843861 2019] [core:notice] [pid 509] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 09:52:49.162019 2019] [mpm_prefork:notice] [pid 501] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 09:52:49.162508 2019] [core:notice] [pid 501] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 09:54:48.787761 2019] [mpm_prefork:notice] [pid 501] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 09:54:48.788250 2019] [core:notice] [pid 501] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sat Oct 05 09:55:42.129175 2019] [mpm_prefork:notice] [pid 501] AH00169: caught SIGTERM, shutting down
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 10:00:39.926258 2019] [mpm_prefork:notice] [pid 500] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 10:00:39.927177 2019] [core:notice] [pid 500] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 10:10:44.491379 2019] [mpm_prefork:notice] [pid 501] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 10:10:44.491845 2019] [core:notice] [pid 501] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sat Oct 05 10:16:03.096315 2019] [mpm_prefork:notice] [pid 501] AH00169: caught SIGTERM, shutting down
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 10:16:19.746487 2019] [mpm_prefork:notice] [pid 24] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 10:16:19.747237 2019] [core:notice] [pid 24] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 10:42:41.045536 2019] [mpm_prefork:notice] [pid 521] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 10:42:41.046436 2019] [core:notice] [pid 521] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 10:45:04.313259 2019] [mpm_prefork:notice] [pid 505] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 10:45:04.314523 2019] [core:notice] [pid 505] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 10:47:52.787087 2019] [mpm_prefork:notice] [pid 505] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 10:47:52.787521 2019] [core:notice] [pid 505] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 13:01:08.629264 2019] [mpm_prefork:notice] [pid 504] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 13:01:08.629742 2019] [core:notice] [pid 504] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 13:05:14.128330 2019] [mpm_prefork:notice] [pid 508] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 13:05:14.128817 2019] [core:notice] [pid 508] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sat Oct 05 13:59:39.388874 2019] [mpm_prefork:notice] [pid 508] AH00169: caught SIGTERM, shutting down
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 14:43:05.952219 2019] [mpm_prefork:notice] [pid 504] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 14:43:05.952846 2019] [core:notice] [pid 504] AH00094: Command line: 'apache2 -D FOREGROUND'
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Sat Oct 05 16:12:41.105947 2019] [core:warn] [pid 26] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sat Oct 05 16:12:41.112982 2019] [mpm_prefork:notice] [pid 26] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Sat Oct 05 16:12:41.113415 2019] [core:notice] [pid 26] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Sat Oct 05 16:15:21.896144 2019] [php7:notice] [pid 450] [client 172.18.0.1:49222] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /app/camagru/app/libraries/Database.php:37\nStack trace:\n#0 /app/camagru/app/models/Post.php(32): Database->query('SELECT image_id...')\n#1 /app/camagru/app/controllers/Pages.php(17): Post->getPostsPaged(0)\n#2 /app/camagru/app/libraries/Core.php(34): Pages->index()\n#3 /app/camagru/public/index.php(6): Core->__construct()\n#4 {main}\n  thrown in /app/camagru/app/libraries/Database.php on line 37

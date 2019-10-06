@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  webserver:
+    # image: mattrayner/lamp:latest-1804
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: 'server'
+    ports:
+      - 80:80
+      - 443:443
+    volumes :
+      - ${PWD}:/app
+      - ${PWD}/logs:/var/log/apache2
