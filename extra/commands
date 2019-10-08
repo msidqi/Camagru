@@ -1,4 +1,4 @@
-STMP for mail :
+	STMP for mail :
 docker run -p "80:80" -d --name server -v ${PWD}:/app mattrayner/lamp:latest-1804
 apt-get update && apt install -y postfix mailutils
 sed -i 's/inet_interfaces = inet/inet_interfaces = loopback-only/' /etc/postfix/main.cf
@@ -6,6 +6,7 @@ sed -i 's/inet_interfaces = inet/inet_interfaces = loopback-only/' /etc/postfix/
 vim /etc/postfix/main.cf
 change to >> inet_interfaces = loopback-only
 service postfix restart || echo "service postfix restart" >> ~/.bashrc
+rm /var/spool/postfix/pid/master.pid 
 #-------------------------------------------------------------------------------
 
 docker exec -it mysql bash
@@ -24,8 +25,8 @@ SELECT * FROM users;
 docker run -p "80:80" -d --name server -v ${PWD}:/app mattrayner/lamp:latest-1804
 
 mysql < app/user.sql
-CREATE USER 'msidqi2'@'localhost' IDENTIFIED BY 'msidqi2';
-GRANT ALL PRIVILEGES ON * . * TO 'msidqi2'@'localhost';
+CREATE USER 'msidqi'@'localhost' IDENTIFIED BY 'msidqi';
+GRANT ALL PRIVILEGES ON * . * TO 'msidqi'@'localhost';
 #-------------------------------------------------------------------------------
 CREATE DATABASE IF NOT EXISTS camagru_db;
 

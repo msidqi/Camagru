@@ -114,6 +114,13 @@ function startup() {
 		fd.append("image", img);
 		fd.append("name", document.getElementById('sticker').getAttribute('name'));
 		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200)	{
+				// console.log(this.responseText);
+				// console.log('here1');
+			}
+			// console.log('here2');
+		}
 		xhr.open("POST", 'http://localhost/camagru/pages/upload');
 		xhr.send(fd);
 

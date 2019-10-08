@@ -44,14 +44,9 @@ class Pages extends Controller {
 	public function like(){
 		if ($_SERVER['REQUEST_METHOD'] == 'POST'
 				&& isLoggedIn() && isset($_POST['image_id']) && isset($_POST['current_user'])){
-			$this->postModel->likePost($_POST['image_id'], $_POST['current_user']);
-			redirect('pages/index');
+			echo $this->postModel->likePost($_POST['image_id'], $_POST['current_user']);
 		} else {
-			$data = [
-				'email_error' => '',
-				'name_error' => ''
-			];
-			$this->view('users/login', $data);
+			redirect('users/login');
 		}
 	}
 
@@ -65,9 +60,10 @@ class Pages extends Controller {
 					if ($this->postModel->storeComment($image_id, $_SESSION['user_id'], $newcomment))
 					$this->postModel->sendNotification(['image_id' => $image_id, 'user_name' => $_SESSION['user_name']]);
 				}
+				// echo 'here';
 				redirect('pages/index');
 			} else {
-				$this->view('users/login');
+				redirect('users/login');
 			}
 		} else
 			redirect('pages/index');

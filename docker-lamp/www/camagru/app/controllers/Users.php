@@ -99,7 +99,7 @@ class Users extends Controller {
 				&& empty($data['password_error']) && empty($data['confirm_password_error'])){
 				$data['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
 				if ($this->userModel->registerUser($data)){
-					$link = '<a href="' . URLROOT . '/users/login?xjk=' . base64_url_encode($this->userModel->getUserId($data['user_name'])) . '&hr=' . md5($data['user_name']) .'">Click here</a>';
+					$link = '<a target="_blank" href="' . URLROOT . '/users/login?xjk=' . base64_url_encode($this->userModel->getUserId($data['user_name'])) . '&hr=' . md5($data['user_name']) .'">Click here</a>';
 					mail($data['email'], 'Verify email', 'Hello ' . $data['user_name'] . PHP_EOL . 'Please verify your email by visiting the following link :' . PHP_EOL . $link);
 					$this->view('users/login', $data); // redirect through url to login page
 				} else {
@@ -454,7 +454,8 @@ class Users extends Controller {
 				$data['email_success'] = 'A password-reset mail has been sent to your email.';
 				$tokken = $this->userModel->resetPasswdTokken($_POST['email']);
 				$base = base64_url_encode($_POST['email']);
-				mail($_POST['email'], 'Reset password for Camagru', 'We got a request to reset your Camagru password : ' . PHP_EOL . URLROOT . '/users/resetpassword?tokken=' . $tokken . '&base=' . $base . PHP_EOL . 'if you didnt request a password change, please ignore this email.');
+				$link = '<a href="' . URLROOT . '/users/resetpassword?tokken=' . $tokken . '&base=' . $base . '" target="_blank" >Click Here</a>';
+				mail($_POST['email'], 'Reset password for Camagru', 'We got a request to reset your Camagru password : ' . PHP_EOL . $link . PHP_EOL . 'if you didnt request a password change, please ignore this email.');
 				} else
 					$data['email_error'] = 'Your account is not verified.';
 			} else

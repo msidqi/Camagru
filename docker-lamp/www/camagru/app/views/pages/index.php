@@ -67,13 +67,29 @@ window.addEventListener('load', function(){
 	var likes = document.getElementsByClassName('like');
 
 	for (var i = 0; i < likes.length; i++){
-
+		
 		likes[i].addEventListener('click', function(){
 			var fd = new FormData();
 			fd.append("image_id", this.getAttribute('name'));
 			fd.append("current_user", "<?php if (!empty($_SESSION['user_name']))echo $_SESSION['user_name']; ?>")
-
 			var xhr = new XMLHttpRequest();
+			xhr.parent = this;
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					if (this.responseText == 1) {
+						if (this.parent.value == 'Like')
+							this.parent.value = 1;
+						else
+							this.parent.value += 1;
+					}
+					else if (this.responseText == -1) {
+						if (this.parent.value == 1 || this.parent.value <= 0)
+							this.parent.value = 'Like';
+						else
+							this.parent.value -= 1;
+					}
+				}
+			}
 			xhr.open("POST", 'http://localhost/camagru/pages/like');
 			xhr.send(fd);
 		}, false);

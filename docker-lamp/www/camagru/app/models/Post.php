@@ -67,16 +67,16 @@ class Post {
 			$this->db->query("DELETE FROM likes WHERE user_id = :user_id");
 			$this->db->bind(':user_id', $user_id, PDO::PARAM_INT);
 			if ($this->db->execute())
-				return (true);
+				return (-1);
 			
 		} else {
 			$this->db->query("INSERT INTO likes (image_id, user_id) VALUES (:image_id, :user_id)");
 			$this->db->bind(':user_id', $user_id, PDO::PARAM_INT);
 			$this->db->bind(':image_id', $image_id, PDO::PARAM_INT);
 			if ($this->db->execute())
-				return (true);
+				return (1);
 		}
-		return (false);
+		return (0);
 	}
 
 	public function deletePostComments($image_id){
