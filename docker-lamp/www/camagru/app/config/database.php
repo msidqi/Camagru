@@ -7,6 +7,8 @@ define('DB_NAME', 'camagru_db');
 
 define('APPROOT', dirname(dirname(__FILE__)));
 
-define('URLROOT', 'http://localhost/camagru');
+define('PUBLIC_', '/camagru/public/');
+
+define('URLROOT', 'https://vmod.dev/camagru');
 
 define('SITENAME', 'Camagru');

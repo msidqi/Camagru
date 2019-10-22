@@ -90,7 +90,7 @@ window.addEventListener('load', function(){
 					}
 				}
 			}
-			xhr.open("POST", 'http://localhost/camagru/pages/like');
+			xhr.open("POST", 'https://vmod.dev/camagru/pages/like');
 			xhr.send(fd);
 		}, false);
 	}

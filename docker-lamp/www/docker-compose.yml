@@ -11,5 +11,5 @@ services:
       - 80:80
       - 443:443
     volumes :
-      - ${PWD}:/app
-      - ${PWD}/logs:/var/log/apache2
+      - .:/app
+      - ./logs:/var/log/apache2

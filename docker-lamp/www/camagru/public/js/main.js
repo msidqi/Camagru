@@ -121,7 +121,7 @@ function startup() {
 			}
 			// console.log('here2');
 		}
-		xhr.open("POST", 'http://localhost/camagru/pages/upload');
+		xhr.open("POST", 'https://vmod.dev/camagru/pages/upload');
 		xhr.send(fd);
 
 	}, false);
