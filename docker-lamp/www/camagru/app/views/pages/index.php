@@ -5,9 +5,10 @@
 	<?php endif; ?>
 
 		<?php foreach($data['posts'] as $key => $value) :?>
+<div class="postholder" name="<?php echo $data['posts'][$key]['image_id']; ?>">
 	<?php if ($key > 0) : ?> <hr class="hr-photos"> <?php endif; ?>
 		<h3 class="text-center"><?php echo $data['posts'][$key]['user_name'];?></h3>
-		<div id="imageholder">
+		<div class="imageholder">
 			
 			<div class="col">
 				<div class="row">
@@ -21,9 +22,7 @@
 					</div>
 					<?php if ($data['user_name'] == $data['posts'][$key]['user_name']) : ?>
 					<div class="col margin-aut">
-						<form method='post' action=<?php echo URLROOT . '/pages/delete'; ?>>	
-						<input type="submit" value="Delete" id="delete" name="<?php echo $data['posts'][$key]['image_id']; ?>" class="btn btn-danger">
-						</form>
+						<input type="submit" value="Delete" id="delete" name="<?php echo $data['posts'][$key]['image_id']; ?>" class="btn btn-danger delete">
 					</div>
 					<?php endif; ?>
 				</div>
@@ -31,7 +30,6 @@
 			
 			
 		</div>
-		<hr class="hr-photos">
 		<div class="commentsbox">
 			<?php foreach($data['posts'][$key]['comments'] as $comment) : ?>
 				<div class="comment">
@@ -45,7 +43,9 @@
 				</form>
 			</div>
 		</div>
+</div>
 		<?php endforeach; ?>
+
 		
 		<div class="paging-container row">
 		<?php for ($i = 0; $i < $data['number_of_pages']; $i++) :?>
@@ -74,7 +74,9 @@ window.addEventListener('load', function(){
 			fd.append("current_user", "<?php if (!empty($_SESSION['user_name']))echo $_SESSION['user_name']; ?>")
 			var xhr = new XMLHttpRequest();
 			xhr.parent = this;
+			// console.log(xhr.parent);
 			xhr.onreadystatechange = function() {
+				
 				if (this.readyState == 4 && this.status == 200) {
 					if (this.responseText == 1) {
 						if (this.parent.value == 'Like')
@@ -90,7 +92,38 @@ window.addEventListener('load', function(){
 					}
 				}
 			}
-			xhr.open("POST", 'https://vmod.dev/camagru/pages/like');
+			xhr.open("POST", 'http://localhost/camagru/pages/like');
+			xhr.send(fd);
+		}, false);
+	}
+
+
+
+	var deletes = document.getElementsByClassName('delete');
+
+	for (var i = 0; i < deletes.length; i++){
+		
+		deletes[i].addEventListener('click', function(){
+			var fd = new FormData();
+			fd.append(this.getAttribute('name'), "image_id");
+			var xhr = new XMLHttpRequest();
+			xhr.parent = this;
+			console.log(this.getAttribute('name'));
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					if (this.responseText === 'deleted'){
+					var arr;
+						arr = document.getElementsByClassName("postholder");
+						for(var i = 0; i < arr.length; i++){
+							if(arr[i].getAttribute('name') === this.parent.getAttribute('name'))
+								arr[i].parentNode.removeChild(arr[i]);
+						}
+					}
+					else
+						console.log('don\'t delete image html');
+				}
+			}
+			xhr.open("POST", 'http://localhost/camagru/pages/delete');
 			xhr.send(fd);
 		}, false);
 	}

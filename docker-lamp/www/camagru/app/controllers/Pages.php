@@ -60,7 +60,7 @@ class Pages extends Controller {
 					if ($this->postModel->storeComment($image_id, $_SESSION['user_id'], $newcomment))
 					$this->postModel->sendNotification(['image_id' => $image_id, 'user_name' => $_SESSION['user_name']]);
 				}
-				// echo 'here';
+				echo 'here';
 				redirect('pages/index');
 			} else {
 				redirect('users/login');
@@ -103,13 +103,13 @@ class Pages extends Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 			if (isLoggedIn() && $this->postModel->isFromUser($image_id_to_delete, $_SESSION['user_id'])){
 				if ($this->postModel->deletePost($image_id_to_delete))
-					redirect('pages/add');
+					echo 'deleted';	 // redirect('pages/add');
 				else
 					echo 'Error : image was not deleted<br>';
 			} else
-				redirect('pages/add');
+				echo '!deleted';	// redirect('pages/add');
 		} else 
-			redirect('pages/add');
+			echo '!deleted';// redirect('pages/add');
 	}
 
 	public function upload(){

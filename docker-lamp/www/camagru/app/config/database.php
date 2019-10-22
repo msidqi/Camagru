@@ -9,6 +9,6 @@ define('APPROOT', dirname(dirname(__FILE__)));
 
 define('PUBLIC_', '/camagru/public/');
 
-define('URLROOT', 'https://vmod.dev/camagru');
+define('URLROOT', 'http://localhost/camagru');
 
 define('SITENAME', 'Camagru');

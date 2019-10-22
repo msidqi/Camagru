@@ -35,7 +35,9 @@
 
 		<div class="col-4 personal-gallery">
 <?php if (!empty($data['posts'])) : foreach($data['posts'] as $post) : ?>
-			<div class="hundred row margin-auto wrapperr">
+<div class="previewholder" name="<?php echo $post['image_id']; ?>">
+	
+		<div class="hundred row margin-auto wrapperr">
 				<img class="photo margin-auto" src="<?php echo $post['image']; ?>">
 				<!-- <img src='images/photo-small.jpg'
          srcset='images/photo-big.jpg 2000w,
@@ -43,11 +45,10 @@
          sizes='(min-width: 960px) 960px,
                 100vw'/> -->
 				<div class="buttonn">
-					<form method='post' action=<?php echo URLROOT . '/pages/delete'; ?>>	
-							<input type="submit" value="Delete" id="delete2" name="<?php echo $post['image_id']; ?>" class="btn btn-danger btn-sm">
-					</form>
+					<input type="submit" value="Delete" id="delete2" name="<?php echo $post['image_id']; ?>" class="btn btn-danger btn-sm deleteb">
 				</div>
-			</div>
+		</div>
+</div>
 <?php endforeach ; endif ; ?>
 		</div>
 	</div>
@@ -64,4 +65,6 @@ var im = [
 	'<?php echo 'data:image/png;base64,' . base64_encode(file_get_contents('../app/photos/superpos/scumbag.png')); ?>'
 ];
 window.addEventListener('load', startup, false);
+
+
 </script>

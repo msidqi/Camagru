@@ -121,9 +121,41 @@ function startup() {
 			}
 			// console.log('here2');
 		}
-		xhr.open("POST", 'https://vmod.dev/camagru/pages/upload');
+		xhr.open("POST", 'http://localhost/camagru/pages/upload');
 		xhr.send(fd);
 
 	}, false);
 	clearphoto();
+
+
+
+
+	var deletes = document.getElementsByClassName('deleteb');
+	for (var i = 0; i < deletes.length; i++){
+		
+		deletes[i].addEventListener('click', function(){
+			var fd = new FormData();
+			fd.append(this.getAttribute('name'), "image_id");
+			var xhr = new XMLHttpRequest();
+			xhr.parent = this;
+			console.log(this.getAttribute('name'));
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					if (this.responseText === 'deleted'){
+						// console.log('delete image html');
+					var arr;
+						arr = document.getElementsByClassName("previewholder");
+						for(var i = 0; i < arr.length; i++){
+							if(arr[i].getAttribute('name') === this.parent.getAttribute('name'))
+								arr[i].parentNode.removeChild(arr[i]);
+						}
+					}
+					else
+						console.log('don\'t delete image html');
+				}
+			}
+			xhr.open("POST", 'http://localhost/camagru/pages/delete');
+			xhr.send(fd);
+		}, false);
+	}
 }
