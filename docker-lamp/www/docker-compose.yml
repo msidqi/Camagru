@@ -6,7 +6,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
-    container_name: 'server'
+    container_name: 'camagru_server'
     ports:
       - 80:80
       - 443:443

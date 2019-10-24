@@ -31,14 +31,16 @@
 			
 		</div>
 		<div class="commentsbox">
+			<div class="commentsonthispost">
 			<?php foreach($data['posts'][$key]['comments'] as $comment) : ?>
 				<div class="comment">
 					<h6><strong><?php echo $comment['name'] . ' : ';?></strong><?php echo $comment['comment']; ?></h5>
 				</div>
 			<?php endforeach;?>
+			</div>
 			<div class="newcomment">
-				<form method="post" action=<?php echo URLROOT . '/pages/comment'; ?>>
-					<textarea class="faded" name="<?php echo $data['posts'][$key]['image_id']; ?>" col="60" row="5" placeholder="your comment..."></textarea>
+				<form>
+					<textarea class="faded text" name="<?php echo $data['posts'][$key]['image_id']; ?>" col="60" row="5" placeholder="your comment..."></textarea>
 					<input type="submit" value="comment" class="btn font newcombox btn-block">
 				</form>
 			</div>
@@ -65,7 +67,6 @@
 <script>
 window.addEventListener('load', function(){
 	var likes = document.getElementsByClassName('like');
-
 	for (var i = 0; i < likes.length; i++){
 		
 		likes[i].addEventListener('click', function(){
@@ -74,9 +75,7 @@ window.addEventListener('load', function(){
 			fd.append("current_user", "<?php if (!empty($_SESSION['user_name']))echo $_SESSION['user_name']; ?>")
 			var xhr = new XMLHttpRequest();
 			xhr.parent = this;
-			// console.log(xhr.parent);
 			xhr.onreadystatechange = function() {
-				
 				if (this.readyState == 4 && this.status == 200) {
 					if (this.responseText == 1) {
 						if (this.parent.value == 'Like')
@@ -97,18 +96,14 @@ window.addEventListener('load', function(){
 		}, false);
 	}
 
-
-
 	var deletes = document.getElementsByClassName('delete');
-
 	for (var i = 0; i < deletes.length; i++){
-		
+
 		deletes[i].addEventListener('click', function(){
 			var fd = new FormData();
 			fd.append(this.getAttribute('name'), "image_id");
 			var xhr = new XMLHttpRequest();
 			xhr.parent = this;
-			console.log(this.getAttribute('name'));
 			xhr.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					if (this.responseText === 'deleted'){
@@ -119,11 +114,33 @@ window.addEventListener('load', function(){
 								arr[i].parentNode.removeChild(arr[i]);
 						}
 					}
-					else
-						console.log('don\'t delete image html');
 				}
 			}
 			xhr.open("POST", 'http://localhost/camagru/pages/delete');
+			xhr.send(fd);
+		}, false);
+	}
+
+	var comments = document.getElementsByClassName('newcombox');
+	for (var i = 0; i < comments.length; i++){
+		
+		comments[i].addEventListener('click', function(){
+			event.preventDefault();
+			var fd = new FormData();
+			fd.append(this.parentNode.getElementsByClassName('text')[0].getAttribute('name'), this.parentNode.getElementsByClassName('text')[0].value);
+			var xhr = new XMLHttpRequest();
+			xhr.parent = this;
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var node = document.createElement('div');
+					node.className = 'comment';
+					var text = document.createTextNode(this.responseText);
+					node.appendChild(text);
+					// console.log(document.querySelector("p").closest(".commentsonthispost"));
+					this.parent.parentNode.parentNode.parentNode.getElementsByClassName('commentsonthispost')[0].appendChild(node);
+				}
+			}
+			xhr.open("POST", 'http://localhost/camagru/pages/comment');
 			xhr.send(fd);
 		}, false);
 	}
