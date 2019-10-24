@@ -27,8 +27,8 @@
 					<?php endif; ?>
 				</div>
 			</div>
-			
-			
+
+
 		</div>
 		<div class="commentsbox">
 			<div class="commentsonthispost">
@@ -66,6 +66,8 @@
 
 <script>
 window.addEventListener('load', function(){
+
+//	like button click event	
 	var likes = document.getElementsByClassName('like');
 	for (var i = 0; i < likes.length; i++){
 		
@@ -96,6 +98,8 @@ window.addEventListener('load', function(){
 		}, false);
 	}
 
+
+// delete button click event
 	var deletes = document.getElementsByClassName('delete');
 	for (var i = 0; i < deletes.length; i++){
 
@@ -121,6 +125,15 @@ window.addEventListener('load', function(){
 		}, false);
 	}
 
+/*
+var node = document.createElement('div');
+node.className = 'comment';
+var text = document.createTextNode(this.responseText);
+node.appendChild(text);
+*/
+
+
+// send comment on comment-button click event
 	var comments = document.getElementsByClassName('newcombox');
 	for (var i = 0; i < comments.length; i++){
 		
@@ -131,17 +144,52 @@ window.addEventListener('load', function(){
 			var xhr = new XMLHttpRequest();
 			xhr.parent = this;
 			xhr.onreadystatechange = function() {
+				
 				if (this.readyState == 4 && this.status == 200) {
-					var node = document.createElement('div');
-					node.className = 'comment';
-					var text = document.createTextNode(this.responseText);
-					node.appendChild(text);
-					// console.log(document.querySelector("p").closest(".commentsonthispost"));
-					this.parent.parentNode.parentNode.parentNode.getElementsByClassName('commentsonthispost')[0].appendChild(node);
+					var res = JSON.parse(this.responseText);
+					if (res[0] === 1){
+						this.parent.parentNode.parentNode.parentNode.getElementsByClassName('commentsonthispost')[0].innerHTML += "<div class=\"comment\"><h6><strong>" + res[1] + "</strong> : " + res[2] + "<h6/></div>";
+						this.parent.parentNode.getElementsByClassName('text')[0].value = '';
+					} else if (res[0] === 2) {
+						window.location.href = res[1];
+					} else if (res[0] === 3) {return ;}
+					else if (res[0] === 4) { return ;}
 				}
 			}
 			xhr.open("POST", 'http://localhost/camagru/pages/comment');
 			xhr.send(fd);
+		}, false);
+	}
+
+
+// send comment on ENTER key event
+	var textarea = document.getElementsByClassName('text');
+
+	for (var i = 0; i < textarea.length; i++){
+		
+		textarea[i].addEventListener('keyup', function(e){
+			if (e.keyCode === 13)
+			{
+				event.preventDefault();
+				var fd = new FormData();
+				fd.append(this.getAttribute('name'), this.value);
+				var xhr = new XMLHttpRequest();
+				xhr.parent = this;
+				xhr.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						var res = JSON.parse(this.responseText);
+						if (res[0] === 1){
+							this.parent.parentNode.parentNode.parentNode.getElementsByClassName('commentsonthispost')[0].innerHTML += "<div class=\"comment\"><h6><strong>" + res[1] + "</strong> : " + res[2] + "<h6/></div>";
+							this.parent.parentNode.getElementsByClassName('text')[0].value = '';
+						} else if (res[0] === 2) {
+							window.location.href = res[1];
+						} else if (res[0] === 3) {return ;}
+						else if (res[0] === 4) { return ;}
+					}
+				}
+				xhr.open("POST", 'http://localhost/camagru/pages/comment');
+				xhr.send(fd);
+			}
 		}, false);
 	}
 }, false);

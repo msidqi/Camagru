@@ -104,3 +104,28 @@ PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /u
 [Wed Oct 23 22:08:36.048261 2019] [core:warn] [pid 25] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
 [Wed Oct 23 22:08:36.053881 2019] [mpm_prefork:notice] [pid 25] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
 [Wed Oct 23 22:08:36.054369 2019] [core:notice] [pid 25] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Thu Oct 24 00:43:26.053695 2019] [mpm_prefork:notice] [pid 25] AH00169: caught SIGTERM, shutting down
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Thu Oct 24 16:53:16.593187 2019] [core:warn] [pid 25] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Thu Oct 24 16:53:16.598147 2019] [mpm_prefork:notice] [pid 25] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Thu Oct 24 16:53:16.598564 2019] [core:notice] [pid 25] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Thu Oct 24 17:20:46.911905 2019] [php7:notice] [pid 908] [client 172.18.0.1:33836] PHP Notice:  Array to string conversion in /app/camagru/app/controllers/Pages.php on line 62, referer: http://localhost/camagru/pages
+[Thu Oct 24 17:20:46.925150 2019] [php7:notice] [pid 908] [client 172.18.0.1:33836] PHP Stack trace:, referer: http://localhost/camagru/pages
+[Thu Oct 24 17:20:46.925439 2019] [php7:notice] [pid 908] [client 172.18.0.1:33836] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages
+[Thu Oct 24 17:20:46.925647 2019] [php7:notice] [pid 908] [client 172.18.0.1:33836] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages
+[Thu Oct 24 17:20:46.925841 2019] [php7:notice] [pid 908] [client 172.18.0.1:33836] PHP   3. Pages->comment() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages
+[Thu Oct 24 17:20:54.792524 2019] [php7:notice] [pid 451] [client 172.18.0.1:33846] PHP Notice:  Array to string conversion in /app/camagru/app/controllers/Pages.php on line 62, referer: http://localhost/camagru/pages
+[Thu Oct 24 17:20:54.792734 2019] [php7:notice] [pid 451] [client 172.18.0.1:33846] PHP Stack trace:, referer: http://localhost/camagru/pages
+[Thu Oct 24 17:20:54.792906 2019] [php7:notice] [pid 451] [client 172.18.0.1:33846] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages
+[Thu Oct 24 17:20:54.793037 2019] [php7:notice] [pid 451] [client 172.18.0.1:33846] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages
+[Thu Oct 24 17:20:54.793194 2019] [php7:notice] [pid 451] [client 172.18.0.1:33846] PHP   3. Pages->comment() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages
+[Thu Oct 24 17:21:10.201636 2019] [php7:notice] [pid 449] [client 172.18.0.1:33858] PHP Notice:  Array to string conversion in /app/camagru/app/controllers/Pages.php on line 62, referer: http://localhost/camagru/pages
+[Thu Oct 24 17:21:10.201827 2019] [php7:notice] [pid 449] [client 172.18.0.1:33858] PHP Stack trace:, referer: http://localhost/camagru/pages
+[Thu Oct 24 17:21:10.201983 2019] [php7:notice] [pid 449] [client 172.18.0.1:33858] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages
+[Thu Oct 24 17:21:10.202144 2019] [php7:notice] [pid 449] [client 172.18.0.1:33858] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages
+[Thu Oct 24 17:21:10.202295 2019] [php7:notice] [pid 449] [client 172.18.0.1:33858] PHP   3. Pages->comment() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages
+[Thu Oct 24 19:24:59.090404 2019] [mpm_prefork:notice] [pid 25] AH00169: caught SIGTERM, shutting down
+PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /usr/lib/php/20180731/mcrypt.so (/usr/lib/php/20180731/mcrypt.so: cannot open shared object file: No such file or directory), /usr/lib/php/20180731/mcrypt.so.so (/usr/lib/php/20180731/mcrypt.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[Thu Oct 24 23:30:48.466844 2019] [core:warn] [pid 25] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
+[Thu Oct 24 23:30:48.474576 2019] [mpm_prefork:notice] [pid 25] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
+[Thu Oct 24 23:30:48.474976 2019] [core:notice] [pid 25] AH00094: Command line: 'apache2 -D FOREGROUND'

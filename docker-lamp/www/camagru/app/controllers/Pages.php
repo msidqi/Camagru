@@ -57,20 +57,19 @@ class Pages extends Controller {
 				$image_id = key($_POST);
 				if (!empty($_POST[$image_id]) && $this->postModel->postExists($image_id)){
 					$newcomment = filter_var($_POST[$image_id], FILTER_SANITIZE_STRING);
-					if ($this->postModel->storeComment($image_id, $_SESSION['user_id'], $newcomment)){
+					$newcomment = trim($newcomment);
+					if (!empty($newcomment) && $this->postModel->storeComment($image_id, $_SESSION['user_id'], $newcomment)){
 						$this->postModel->sendNotification(['image_id' => $image_id, 'user_name' => $_SESSION['user_name']]);
-						echo $newcomment;
-					}
-				}
-				// echo 'commented';
-				// redirect('pages/index');
+						echo json_encode([1, $_SESSION['user_name'], $newcomment]);
+					} else
+						echo json_encode([3]);
+				} else
+					echo json_encode([4]);
 			} else {
-				echo 'login please';
-				// redirect('users/login');
+				echo json_encode([2, URLROOT . '/users/login']);
 			}
 		} else
-			echo 'Not POST req';
-			// redirect('pages/index');
+			redirect('pages/index');
 	}
 
     public function about(){
