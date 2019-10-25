@@ -196,11 +196,8 @@ class Pages extends Controller {
 						} else
 							$data['error'] = 'Permissions not set correctly.';
 				}
-				
-			} else {
-				$this->view('pages/add', ['error' => 'Somehing went wrong']); // error during processing
+				redirect('pages/add');
 			}
-			// redirect('pages/add');
 		} else {
 			redirect('users/login'); // not POST
 		}

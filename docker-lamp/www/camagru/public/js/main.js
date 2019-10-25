@@ -13,7 +13,7 @@ image = new Image;
 // image.crossOrigin = "anonymous";
 function clearphoto() {
 	var context = canvas.getContext('2d');
-	context.fillStyle = "#AAA";
+	context.fillStyle = "#EEE";
 	context.fillRect(0, 0, canvas.width, canvas.height);
 
 	var data = canvas.toDataURL('image/png');
@@ -82,31 +82,34 @@ function startup() {
 	}, false);
 
 	capture.addEventListener('click', function(event){
-		takepicture();
 		event.preventDefault();
+		takepicture();
 	});
-
 	// enables capture button when clicked on any sticker.
 	var stickers = document.getElementsByClassName("sticker");
 	for (var i = 0; i < stickers.length; i++){
 		stickers[i].setAttribute("name", i + 1);	
 		stickers[i].addEventListener('click', function(e){
-			var name = document.getElementById('sticker').getAttribute('name');
-			if (name == 1)
+			// get clicked sticker's id
+			var newname =  this.getAttribute("name");
+			// sets two upload button's name attr
+			document.getElementById("sticker").setAttribute("name", newname);
+			document.getElementById("pic").setAttribute("name", newname);
+			//changes src to be uploaded
+			if (newname == 1)
 				image.src = im[0];
-			else if (name == 2)
+			else if (newname == 2)
 				image.src = im[1];
-			else if (name == 3)
+			else if (newname == 3)
 				image.src = im[2];
-			else if (name == 4)
+			else if (newname == 4)
 				image.src = im[3];
-			else if (name == 5)
+			else if (newname == 5)
 				image.src = im[4];
+			// enables taking picture...
 			document.getElementById("capture").disabled = false;
 			document.getElementById("pic").disabled = false;
 			document.getElementById("sticker").disabled = false;
-			document.getElementById("sticker").setAttribute("name", this.getAttribute("name"));
-			document.getElementById("pic").setAttribute("name", this.getAttribute("name"));
 		}, false);
 	}
 	document.getElementById("pic").addEventListener('click', function(e) {
@@ -158,11 +161,7 @@ function startup() {
 		xhr.send(fd);
 
 	}, false);
-	clearphoto();
-
-
-
-
+	//
 	var deletes = document.getElementsByClassName('deleteb');
 	for (var i = 0; i < deletes.length; i++){
 		
