@@ -39,11 +39,6 @@
 	
 		<div class="hundred row margin-auto wrapperr">
 				<img class="photo margin-auto" src="<?php echo $post['image']; ?>">
-				<!-- <img src='images/photo-small.jpg'
-         srcset='images/photo-big.jpg 2000w,
-                 images/photo-small.jpg 1000w'
-         sizes='(min-width: 960px) 960px,
-                100vw'/> -->
 				<div class="buttonn">
 					<input type="submit" value="Delete" id="delete2" name="<?php echo $post['image_id']; ?>" class="btn btn-danger btn-sm deleteb">
 				</div>

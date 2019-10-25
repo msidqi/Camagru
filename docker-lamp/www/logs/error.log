@@ -129,3 +129,190 @@ PHP Warning:  PHP Startup: Unable to load dynamic library 'mcrypt.so' (tried: /u
 [Thu Oct 24 23:30:48.466844 2019] [core:warn] [pid 25] AH00098: pid file /var/run/apache2/apache2.pid overwritten -- Unclean shutdown of previous Apache run?
 [Thu Oct 24 23:30:48.474576 2019] [mpm_prefork:notice] [pid 25] AH00163: Apache/2.4.29 (Ubuntu) configured -- resuming normal operations
 [Thu Oct 24 23:30:48.474976 2019] [core:notice] [pid 25] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Fri Oct 25 00:25:42.021744 2019] [php7:notice] [pid 471] [client 172.18.0.1:40290] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:25:42.021934 2019] [php7:notice] [pid 471] [client 172.18.0.1:40290] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:25:42.022156 2019] [php7:notice] [pid 471] [client 172.18.0.1:40290] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:25:42.022320 2019] [php7:notice] [pid 471] [client 172.18.0.1:40290] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:25:42.022478 2019] [php7:notice] [pid 471] [client 172.18.0.1:40290] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:25:46.614407 2019] [php7:notice] [pid 471] [client 172.18.0.1:40290] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:25:46.614724 2019] [php7:notice] [pid 471] [client 172.18.0.1:40290] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:25:46.614934 2019] [php7:notice] [pid 471] [client 172.18.0.1:40290] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:25:46.615085 2019] [php7:notice] [pid 471] [client 172.18.0.1:40290] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:25:46.615250 2019] [php7:notice] [pid 471] [client 172.18.0.1:40290] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:09.317328 2019] [php7:notice] [pid 449] [client 172.18.0.1:40296] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:09.320890 2019] [php7:notice] [pid 449] [client 172.18.0.1:40296] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:09.321276 2019] [php7:notice] [pid 449] [client 172.18.0.1:40296] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:09.321585 2019] [php7:notice] [pid 449] [client 172.18.0.1:40296] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:09.322006 2019] [php7:notice] [pid 449] [client 172.18.0.1:40296] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:10.132256 2019] [php7:notice] [pid 449] [client 172.18.0.1:40296] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:10.132437 2019] [php7:notice] [pid 449] [client 172.18.0.1:40296] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:10.132574 2019] [php7:notice] [pid 449] [client 172.18.0.1:40296] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:10.132727 2019] [php7:notice] [pid 449] [client 172.18.0.1:40296] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:10.132860 2019] [php7:notice] [pid 449] [client 172.18.0.1:40296] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:18.290107 2019] [php7:notice] [pid 448] [client 172.18.0.1:40302] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:18.290292 2019] [php7:notice] [pid 448] [client 172.18.0.1:40302] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:18.290458 2019] [php7:notice] [pid 448] [client 172.18.0.1:40302] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:18.290584 2019] [php7:notice] [pid 448] [client 172.18.0.1:40302] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:18.290741 2019] [php7:notice] [pid 448] [client 172.18.0.1:40302] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:20.687817 2019] [php7:notice] [pid 448] [client 172.18.0.1:40302] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:20.688008 2019] [php7:notice] [pid 448] [client 172.18.0.1:40302] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:20.688144 2019] [php7:notice] [pid 448] [client 172.18.0.1:40302] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:20.688283 2019] [php7:notice] [pid 448] [client 172.18.0.1:40302] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:20.688401 2019] [php7:notice] [pid 448] [client 172.18.0.1:40302] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:33.562905 2019] [php7:notice] [pid 450] [client 172.18.0.1:40312] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:33.563305 2019] [php7:notice] [pid 450] [client 172.18.0.1:40312] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:33.563712 2019] [php7:notice] [pid 450] [client 172.18.0.1:40312] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:33.563956 2019] [php7:notice] [pid 450] [client 172.18.0.1:40312] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:27:33.564233 2019] [php7:notice] [pid 450] [client 172.18.0.1:40312] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:29:21.741366 2019] [php7:notice] [pid 452] [client 172.18.0.1:40318] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:29:21.741524 2019] [php7:notice] [pid 452] [client 172.18.0.1:40318] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:29:21.741647 2019] [php7:notice] [pid 452] [client 172.18.0.1:40318] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:29:21.741775 2019] [php7:notice] [pid 452] [client 172.18.0.1:40318] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:29:21.741888 2019] [php7:notice] [pid 452] [client 172.18.0.1:40318] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:29:33.099347 2019] [php7:notice] [pid 470] [client 172.18.0.1:40324] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:29:33.099492 2019] [php7:notice] [pid 470] [client 172.18.0.1:40324] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:29:33.099612 2019] [php7:notice] [pid 470] [client 172.18.0.1:40324] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:29:33.099736 2019] [php7:notice] [pid 470] [client 172.18.0.1:40324] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:29:33.099848 2019] [php7:notice] [pid 470] [client 172.18.0.1:40324] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:08.976550 2019] [php7:notice] [pid 450] [client 172.18.0.1:40346] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:08.976727 2019] [php7:notice] [pid 450] [client 172.18.0.1:40346] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:08.976859 2019] [php7:notice] [pid 450] [client 172.18.0.1:40346] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:08.976969 2019] [php7:notice] [pid 450] [client 172.18.0.1:40346] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:08.977082 2019] [php7:notice] [pid 450] [client 172.18.0.1:40346] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:20.122143 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:20.122343 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:20.122488 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:20.122681 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:20.122855 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:25.453269 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:25.453414 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:25.453542 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:25.453654 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:25.453772 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:27.534850 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:27.534989 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:27.535113 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:27.535282 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:27.535476 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:30.945327 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:30.945514 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:30.945678 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:30.945806 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:35:30.945921 2019] [php7:notice] [pid 452] [client 172.18.0.1:40352] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:13.595075 2019] [php7:notice] [pid 470] [client 172.18.0.1:40362] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /app/camagru/app/controllers/Pages.php on line 158, referer: http://localhost/camagru/
+[Fri Oct 25 00:37:15.607732 2019] [php7:notice] [pid 471] [client 172.18.0.1:40364] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /app/camagru/app/controllers/Pages.php on line 158, referer: http://localhost/camagru/
+[Fri Oct 25 00:37:16.585663 2019] [php7:notice] [pid 449] [client 172.18.0.1:40366] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /app/camagru/app/controllers/Pages.php on line 158, referer: http://localhost/camagru/
+[Fri Oct 25 00:37:33.683085 2019] [php7:notice] [pid 450] [client 172.18.0.1:40376] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 150, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:33.683361 2019] [php7:notice] [pid 450] [client 172.18.0.1:40376] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:33.683584 2019] [php7:notice] [pid 450] [client 172.18.0.1:40376] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:33.683782 2019] [php7:notice] [pid 450] [client 172.18.0.1:40376] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:33.683941 2019] [php7:notice] [pid 450] [client 172.18.0.1:40376] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:33.684597 2019] [php7:notice] [pid 450] [client 172.18.0.1:40376] PHP Notice:  Undefined variable: data in /app/camagru/app/controllers/Pages.php on line 154, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:33.684879 2019] [php7:notice] [pid 450] [client 172.18.0.1:40376] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:33.685121 2019] [php7:notice] [pid 450] [client 172.18.0.1:40376] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:33.685440 2019] [php7:notice] [pid 450] [client 172.18.0.1:40376] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:33.685737 2019] [php7:notice] [pid 450] [client 172.18.0.1:40376] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:44.938563 2019] [php7:notice] [pid 452] [client 172.18.0.1:40380] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 150, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:44.938707 2019] [php7:notice] [pid 452] [client 172.18.0.1:40380] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:44.938822 2019] [php7:notice] [pid 452] [client 172.18.0.1:40380] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:44.939134 2019] [php7:notice] [pid 452] [client 172.18.0.1:40380] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:44.939254 2019] [php7:notice] [pid 452] [client 172.18.0.1:40380] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:44.939620 2019] [php7:notice] [pid 452] [client 172.18.0.1:40380] PHP Notice:  Undefined variable: data in /app/camagru/app/controllers/Pages.php on line 154, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:44.939728 2019] [php7:notice] [pid 452] [client 172.18.0.1:40380] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:44.939865 2019] [php7:notice] [pid 452] [client 172.18.0.1:40380] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:44.939982 2019] [php7:notice] [pid 452] [client 172.18.0.1:40380] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:44.940096 2019] [php7:notice] [pid 452] [client 172.18.0.1:40380] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:57.114053 2019] [php7:notice] [pid 470] [client 172.18.0.1:40384] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 150, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:57.114202 2019] [php7:notice] [pid 470] [client 172.18.0.1:40384] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:57.114324 2019] [php7:notice] [pid 470] [client 172.18.0.1:40384] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:57.114428 2019] [php7:notice] [pid 470] [client 172.18.0.1:40384] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:57.114534 2019] [php7:notice] [pid 470] [client 172.18.0.1:40384] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:57.114959 2019] [php7:notice] [pid 470] [client 172.18.0.1:40384] PHP Notice:  Undefined variable: data in /app/camagru/app/controllers/Pages.php on line 154, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:57.115158 2019] [php7:notice] [pid 470] [client 172.18.0.1:40384] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:57.115383 2019] [php7:notice] [pid 470] [client 172.18.0.1:40384] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:57.115560 2019] [php7:notice] [pid 470] [client 172.18.0.1:40384] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:37:57.115696 2019] [php7:notice] [pid 470] [client 172.18.0.1:40384] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:46.621769 2019] [php7:notice] [pid 451] [client 172.18.0.1:40394] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 150, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:46.621935 2019] [php7:notice] [pid 451] [client 172.18.0.1:40394] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:46.622094 2019] [php7:notice] [pid 451] [client 172.18.0.1:40394] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:46.622205 2019] [php7:notice] [pid 451] [client 172.18.0.1:40394] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:46.622338 2019] [php7:notice] [pid 451] [client 172.18.0.1:40394] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:46.623015 2019] [php7:notice] [pid 451] [client 172.18.0.1:40394] PHP Notice:  Undefined variable: data in /app/camagru/app/controllers/Pages.php on line 154, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:46.623306 2019] [php7:notice] [pid 451] [client 172.18.0.1:40394] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:46.623502 2019] [php7:notice] [pid 451] [client 172.18.0.1:40394] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:46.623680 2019] [php7:notice] [pid 451] [client 172.18.0.1:40394] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:46.623847 2019] [php7:notice] [pid 451] [client 172.18.0.1:40394] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:54.647138 2019] [php7:notice] [pid 448] [client 172.18.0.1:40398] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 150, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:54.647443 2019] [php7:notice] [pid 448] [client 172.18.0.1:40398] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:54.647769 2019] [php7:notice] [pid 448] [client 172.18.0.1:40398] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:54.648026 2019] [php7:notice] [pid 448] [client 172.18.0.1:40398] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:54.648364 2019] [php7:notice] [pid 448] [client 172.18.0.1:40398] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:54.649055 2019] [php7:notice] [pid 448] [client 172.18.0.1:40398] PHP Notice:  Undefined variable: data in /app/camagru/app/controllers/Pages.php on line 154, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:54.649337 2019] [php7:notice] [pid 448] [client 172.18.0.1:40398] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:54.649589 2019] [php7:notice] [pid 448] [client 172.18.0.1:40398] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:54.649856 2019] [php7:notice] [pid 448] [client 172.18.0.1:40398] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:39:54.650153 2019] [php7:notice] [pid 448] [client 172.18.0.1:40398] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:41:28.595135 2019] [php7:notice] [pid 469] [client 172.18.0.1:40402] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 150, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:41:28.595379 2019] [php7:notice] [pid 469] [client 172.18.0.1:40402] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:41:28.595642 2019] [php7:notice] [pid 469] [client 172.18.0.1:40402] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:41:28.595858 2019] [php7:notice] [pid 469] [client 172.18.0.1:40402] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:41:28.596067 2019] [php7:notice] [pid 469] [client 172.18.0.1:40402] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:41:36.209080 2019] [php7:notice] [pid 452] [client 172.18.0.1:40410] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 150, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:41:36.209205 2019] [php7:notice] [pid 452] [client 172.18.0.1:40410] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:41:36.209399 2019] [php7:notice] [pid 452] [client 172.18.0.1:40410] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:41:36.209638 2019] [php7:notice] [pid 452] [client 172.18.0.1:40410] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:41:36.209762 2019] [php7:notice] [pid 452] [client 172.18.0.1:40410] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:42:21.587061 2019] [php7:notice] [pid 449] [client 172.18.0.1:40420] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 150, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:42:21.587225 2019] [php7:notice] [pid 449] [client 172.18.0.1:40420] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:42:21.587346 2019] [php7:notice] [pid 449] [client 172.18.0.1:40420] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:42:21.587490 2019] [php7:notice] [pid 449] [client 172.18.0.1:40420] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:42:21.587592 2019] [php7:notice] [pid 449] [client 172.18.0.1:40420] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:42:48.896649 2019] [php7:notice] [pid 469] [client 172.18.0.1:40434] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 150, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:42:48.896822 2019] [php7:notice] [pid 469] [client 172.18.0.1:40434] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:42:48.896963 2019] [php7:notice] [pid 469] [client 172.18.0.1:40434] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:42:48.897072 2019] [php7:notice] [pid 469] [client 172.18.0.1:40434] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:42:48.897234 2019] [php7:notice] [pid 469] [client 172.18.0.1:40434] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:43:39.263930 2019] [php7:notice] [pid 452] [client 172.18.0.1:40438] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 150, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:43:39.264160 2019] [php7:notice] [pid 452] [client 172.18.0.1:40438] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:43:39.264313 2019] [php7:notice] [pid 452] [client 172.18.0.1:40438] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:43:39.264466 2019] [php7:notice] [pid 452] [client 172.18.0.1:40438] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:43:39.264710 2019] [php7:notice] [pid 452] [client 172.18.0.1:40438] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:44:02.095150 2019] [php7:notice] [pid 471] [client 172.18.0.1:40442] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 150, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:44:02.095547 2019] [php7:notice] [pid 471] [client 172.18.0.1:40442] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:44:02.095738 2019] [php7:notice] [pid 471] [client 172.18.0.1:40442] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:44:02.095878 2019] [php7:notice] [pid 471] [client 172.18.0.1:40442] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:44:02.095980 2019] [php7:notice] [pid 471] [client 172.18.0.1:40442] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:44:10.158811 2019] [php7:notice] [pid 451] [client 172.18.0.1:40450] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 150, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:44:10.159059 2019] [php7:notice] [pid 451] [client 172.18.0.1:40450] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:44:10.159234 2019] [php7:notice] [pid 451] [client 172.18.0.1:40450] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:44:10.159376 2019] [php7:notice] [pid 451] [client 172.18.0.1:40450] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:44:10.159523 2019] [php7:notice] [pid 451] [client 172.18.0.1:40450] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:44:16.524151 2019] [php7:notice] [pid 449] [client 172.18.0.1:40454] PHP Notice:  Undefined variable: post in /app/camagru/app/controllers/Pages.php on line 150, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:44:16.524560 2019] [php7:notice] [pid 449] [client 172.18.0.1:40454] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:44:16.524871 2019] [php7:notice] [pid 449] [client 172.18.0.1:40454] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:44:16.525236 2019] [php7:notice] [pid 449] [client 172.18.0.1:40454] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:44:16.525640 2019] [php7:notice] [pid 449] [client 172.18.0.1:40454] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:46:41.486310 2019] [php7:notice] [pid 450] [client 172.18.0.1:40492] PHP Fatal error:  Uncaught Error: Call to undefined method Database::lastInsertedId() in /app/camagru/app/models/Post.php:178\nStack trace:\n#0 /app/camagru/app/controllers/Pages.php(150): Post->storePost(Array)\n#1 /app/camagru/app/libraries/Core.php(34): Pages->upload()\n#2 /app/camagru/public/index.php(6): Core->__construct()\n#3 {main}\n  thrown in /app/camagru/app/models/Post.php on line 178, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:46:55.748212 2019] [php7:notice] [pid 470] [client 172.18.0.1:40506] PHP Fatal error:  Uncaught Error: Call to undefined method Database::lastInsertedId() in /app/camagru/app/models/Post.php:178\nStack trace:\n#0 /app/camagru/app/controllers/Pages.php(150): Post->storePost(Array)\n#1 /app/camagru/app/libraries/Core.php(34): Pages->upload()\n#2 /app/camagru/public/index.php(6): Core->__construct()\n#3 {main}\n  thrown in /app/camagru/app/models/Post.php on line 178, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:48:52.664278 2019] [php7:notice] [pid 471] [client 172.18.0.1:40510] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::lastInsertId() in /app/camagru/app/libraries/Database.php:76\nStack trace:\n#0 /app/camagru/app/models/Post.php(178): Database->lastInsertId()\n#1 /app/camagru/app/controllers/Pages.php(150): Post->storePost(Array)\n#2 /app/camagru/app/libraries/Core.php(34): Pages->upload()\n#3 /app/camagru/public/index.php(6): Core->__construct()\n#4 {main}\n  thrown in /app/camagru/app/libraries/Database.php on line 76, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 00:49:08.128327 2019] [php7:notice] [pid 469] [client 172.18.0.1:40528] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::lastInsertId() in /app/camagru/app/libraries/Database.php:76\nStack trace:\n#0 /app/camagru/app/models/Post.php(178): Database->lastInsertId()\n#1 /app/camagru/app/controllers/Pages.php(150): Post->storePost(Array)\n#2 /app/camagru/app/libraries/Core.php(34): Pages->upload()\n#3 /app/camagru/public/index.php(6): Core->__construct()\n#4 {main}\n  thrown in /app/camagru/app/libraries/Database.php on line 76, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:46:54.552989 2019] [php7:notice] [pid 448] [client 172.18.0.1:40992] PHP Warning:  base64_encode() expects parameter 1 to be string, resource given in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:46:54.553334 2019] [php7:notice] [pid 448] [client 172.18.0.1:40992] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:46:54.553495 2019] [php7:notice] [pid 448] [client 172.18.0.1:40992] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:46:54.553641 2019] [php7:notice] [pid 448] [client 172.18.0.1:40992] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:46:54.553800 2019] [php7:notice] [pid 448] [client 172.18.0.1:40992] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:46:54.553976 2019] [php7:notice] [pid 448] [client 172.18.0.1:40992] PHP   4. base64_encode() /app/camagru/app/controllers/Pages.php:151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:47:22.132278 2019] [php7:notice] [pid 450] [client 172.18.0.1:41004] PHP Warning:  base64_encode() expects parameter 1 to be string, resource given in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:47:22.132482 2019] [php7:notice] [pid 450] [client 172.18.0.1:41004] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:47:22.132654 2019] [php7:notice] [pid 450] [client 172.18.0.1:41004] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:47:22.132800 2019] [php7:notice] [pid 450] [client 172.18.0.1:41004] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:47:22.132927 2019] [php7:notice] [pid 450] [client 172.18.0.1:41004] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:47:22.133082 2019] [php7:notice] [pid 450] [client 172.18.0.1:41004] PHP   4. base64_encode() /app/camagru/app/controllers/Pages.php:151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:53:04.047743 2019] [php7:notice] [pid 470] [client 172.18.0.1:41098] PHP Warning:  base64_encode() expects parameter 1 to be string, resource given in /app/camagru/app/controllers/Pages.php on line 151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:53:04.047961 2019] [php7:notice] [pid 470] [client 172.18.0.1:41098] PHP Stack trace:, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:53:04.048148 2019] [php7:notice] [pid 470] [client 172.18.0.1:41098] PHP   1. {main}() /app/camagru/public/index.php:0, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:53:04.048302 2019] [php7:notice] [pid 470] [client 172.18.0.1:41098] PHP   2. Core->__construct() /app/camagru/public/index.php:6, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:53:04.048467 2019] [php7:notice] [pid 470] [client 172.18.0.1:41098] PHP   3. Pages->upload() /app/camagru/app/libraries/Core.php:34, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:53:04.048599 2019] [php7:notice] [pid 470] [client 172.18.0.1:41098] PHP   4. base64_encode() /app/camagru/app/controllers/Pages.php:151, referer: http://localhost/camagru/pages/add
+[Fri Oct 25 01:55:34.039997 2019] [php7:notice] [pid 646] [client 172.18.0.1:41106] PHP Parse error:  syntax error, unexpected end of file in /app/camagru/app/util_functions/image_functions.php on line 45, referer: http://localhost/camagru/
+[Fri Oct 25 01:55:35.448862 2019] [php7:notice] [pid 448] [client 172.18.0.1:41108] PHP Parse error:  syntax error, unexpected end of file in /app/camagru/app/util_functions/image_functions.php on line 45, referer: http://localhost/camagru/

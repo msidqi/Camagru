@@ -42,5 +42,4 @@ function blendImages($sppath, $destpath){
 	imagedestroy($superpos);
 	return (true);
 }
-
 ?>

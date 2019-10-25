@@ -116,8 +116,41 @@ function startup() {
 		var xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200)	{
-				// console.log(this.responseText);
-				// console.log('here1');
+				var res = JSON.parse(this.responseText);
+				var newpost = document.createElement('div');
+				newpost.className = 'previewholder';
+				newpost.setAttribute('name', res[0]);;
+				newpost.innerHTML = `<div class="hundred row margin-auto wrapperr">
+					<img class="photo margin-auto" src="` + res[1] + `">
+					<div class="buttonn">
+						<input type="submit" value="Delete" id="delete2" name="`+ res[0] +`" class="btn btn-danger btn-sm deleteb">
+					</div>
+				</div>`;
+				var deleteb = newpost.getElementsByClassName('deleteb')[0];
+				deleteb.addEventListener('click', function () {
+							var fd = new FormData();
+							fd.append(this.getAttribute('name'), "image_id");
+							var xhr = new XMLHttpRequest();
+							xhr.parent = this;
+							xhr.onreadystatechange = function() {
+								if (this.readyState == 4 && this.status == 200) {
+									if (this.responseText === 'deleted'){
+									var arr;
+										arr = document.getElementsByClassName("previewholder");
+										for(var i = 0; i < arr.length; i++){
+											if(arr[i].getAttribute('name') === this.parent.getAttribute('name'))
+												arr[i].parentNode.removeChild(arr[i]);
+										}
+									}
+									else
+										console.log('don\'t delete image html');
+								}
+							}
+							xhr.open("POST", 'http://localhost/camagru/pages/delete');
+							xhr.send(fd);
+						}, false)
+				var gallery = document.getElementsByClassName('personal-gallery')[0];
+				gallery.insertBefore(newpost, gallery.childNodes[0]);
 			}
 			// console.log('here2');
 		}
@@ -138,11 +171,9 @@ function startup() {
 			fd.append(this.getAttribute('name'), "image_id");
 			var xhr = new XMLHttpRequest();
 			xhr.parent = this;
-			console.log(this.getAttribute('name'));
 			xhr.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					if (this.responseText === 'deleted'){
-						// console.log('delete image html');
 					var arr;
 						arr = document.getElementsByClassName("previewholder");
 						for(var i = 0; i < arr.length; i++){

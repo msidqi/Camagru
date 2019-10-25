@@ -29,7 +29,7 @@
 			</div>
 
 
-		</div>
+
 		<div class="commentsbox">
 			<div class="commentsonthispost">
 			<?php foreach($data['posts'][$key]['comments'] as $comment) : ?>
@@ -45,6 +45,9 @@
 				</form>
 			</div>
 		</div>
+
+		</div>
+		
 </div>
 		<?php endforeach; ?>
 

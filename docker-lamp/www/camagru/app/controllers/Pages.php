@@ -136,18 +136,21 @@ class Pages extends Controller {
 				$sticker = getStickerName($_POST['name']);
 				$decodedimg = base64_decode(substr($_POST['image'], 22, strlen($_POST['image'])));
 				$ex = substr($decodedimg , 1, 3);
-				if (!($size = @filesize(APPROOT . '/photos/posts/' . $unique_name . '.png')))
+				$destpath = APPROOT . '/photos/posts/' . $unique_name . '.png';
+				if (!($size = @filesize($destpath)))
 					$size = 0;
 				if ($ex == 'PNG' && $size < $maxsize){
-					file_put_contents(APPROOT . '/photos/posts/' . $unique_name . '.png', $decodedimg);
+					file_put_contents($destpath, $decodedimg);
 					$postpic = [
 						'user_id'		=> $_SESSION['user_id'],
 						'image'			=> '/photos/posts/' . $unique_name . '.png',
 						'image_type'	=> 'png',
 						'image_size'	=> $size,
-					];					
-					if (blendImages($sticker, APPROOT . '/photos/posts/' . $unique_name . '.png')
-						&& $this->postModel->storePost($postpic)){
+					];
+					
+					if (($retimg = blendImages($sticker, $destpath))
+						&& ($returnId = $this->postModel->storePost($postpic))){
+						echo json_encode([$returnId, 'data:image/png;base64,'.base64_encode(file_get_contents($destpath))]);
 						$data['error'] = '';
 					}
 				}
@@ -197,7 +200,7 @@ class Pages extends Controller {
 			} else {
 				$this->view('pages/add', ['error' => 'Somehing went wrong']); // error during processing
 			}
-			redirect('pages/add');
+			// redirect('pages/add');
 		} else {
 			redirect('users/login'); // not POST
 		}

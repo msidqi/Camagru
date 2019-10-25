@@ -175,7 +175,7 @@ class Post {
 		$this->db->bind(':image_type', $post['image_type'], PDO::PARAM_STR);
 		$this->db->bind(':image_size', $post['image_size'], PDO::PARAM_INT);
 		if ($this->db->execute())
-			return (true);
+			return ($this->db->lastInsertId());
 		}
 		catch (PDOException $e)
 		{
