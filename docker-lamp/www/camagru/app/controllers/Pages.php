@@ -197,7 +197,8 @@ class Pages extends Controller {
 							$data['error'] = 'Permissions not set correctly.';
 				}
 				redirect('pages/add');
-			}
+			} else
+				redirect('pages/add');
 		} else {
 			redirect('users/login'); // not POST
 		}
