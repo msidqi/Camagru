@@ -1,0 +1,114 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* body{
+    background: #222222;
+    color: white;
+} */
+
+  body {
+    width: 100%;
+    height: 100%;
+    background-color: #013A6B;
+    background-image: -webkit-linear-gradient(-30deg, #222222 50%, rgb(49, 49, 47) 50%);
+}
+#outcontainer {
+    /* position: relative; */
+    width: 100%;
+    height: 100%;
+    
+    /* display: flex;
+    align-items: center; */
+}
+#container {
+    border: solid;
+    border-width: 0px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 15px 10px;
+    margin: 0 auto;
+    margin-top: 100px;
+    width: 100%;
+    max-width: 800px; 
+    /* position: absolute; */
+    /* transform: translate(-50%, -50%); */
+    /* left: 50%;top: 50%; */
+}
+
+.imgcon{
+    width : 100%;
+
+}
+.imgcon img {
+    width:100%;
+    object-fit: contain;
+    overflow: hidden;
+}
+.part{
+    /* border: solid;
+    border-width: 0px;
+    border-radius: 5px; */
+    /* border-color: #f2f2f2; */
+    min-height: 100px;
+    margin: 10px;
+    /* background-color: #ffffff; */
+}
+
+.part img {
+    transition: transform .2s ease-in-out;
+}
+.part:hover {
+    background-color: #f6f6f6;
+}
+
+
+/* .part {
+    min-height: 100px;
+    background-color: #ffffff;
+    background-position: top left;
+   
+
+  } */
+
+/* .part:hover {
+    background: url("https://raw.githubusercontent.com/msidqi/GPU-Fractals/master/img/Screen%20Shot%202019-10-10%20at%204.10.34%20PM.png") no-repeat;
+    -webkit-animation: mymove 10s; 
+    animation: mymove 10s;
+    color: white;
+    background-position: -100px;
+} */
+  /* @-webkit-keyframes mymove {
+    100% {background-position: 300px 100px;}
+  }
+
+  @keyframes mymove {
+    100% {background-position: -300px 100px;}
+  } */
+
+  #con {
+      padding: 5px 10px;
+  }
+
+  #bar {
+      height: 50px;
+      /* width: 100%; */
+      /* background-color: rgb(0, 0, 0); */
+  }
+
+  #bar button:hover {
+    /* transition: transform .2s; */
+    transform: scale3d(1.1, 1.1, 1.1)
+  }
+  
+  .transparent {
+    background-color: Transparent;
+    border-width: 0px;
+  }
+
+  .smoll {
+      background-color: #013A6B;
+  }
